@@ -37,14 +37,17 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 flex flex-col items-center justify-center transition-opacity duration-500 ${
-        progress === 100 ? 'opacity-0' : 'opacity-100'
-      }`}
+      className={`fixed inset-0 z-[100] bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 flex flex-col items-center justify-center transition-opacity duration-500 ${progress === 100 ? 'opacity-0' : 'opacity-100'
+        }`}
     >
       <div className="text-center space-y-6">
         {/* Logo placeholder */}
-        <div className="mb-8 animate-pulse">
-          <GraduationCap className="w-24 h-24 text-amber-500 mx-auto" />
+        <div className="flex items-center justify-center">
+          <img
+            src="/images/logo.png"
+            alt="John Kennedy International Schools"
+            className="w-24 h-24 md:w-32 md:h-32 object-contain animate-pulse"
+          />
         </div>
 
         {/* School Name */}

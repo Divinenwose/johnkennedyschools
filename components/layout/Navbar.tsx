@@ -36,18 +36,21 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? 'bg-white shadow-lg'
             : 'bg-white/95 backdrop-blur-sm shadow-sm'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <div className="bg-blue-900 p-2 rounded-lg">
-                <GraduationCap className="w-8 h-8 text-amber-500" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img
+                  src="/images/logo.png"
+                  alt="John Kennedy International Schools logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-lg font-bold text-blue-900 leading-tight">
@@ -65,11 +68,10 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-amber-600 ${
-                    pathname === item.href
+                  className={`text-sm font-medium transition-colors hover:text-amber-600 ${pathname === item.href
                       ? 'text-amber-600'
                       : 'text-gray-700'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -110,18 +112,16 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <div
           className="absolute inset-0 bg-black/50 backdrop-blur-sm"
           onClick={closeMobileMenu}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-80 bg-white shadow-xl transform transition-transform duration-300 ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute right-0 top-0 bottom-0 w-80 bg-white shadow-xl transform transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
@@ -156,11 +156,10 @@ export const Navbar: React.FC = () => {
                     key={item.href}
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className={`block py-3 px-4 rounded-lg text-sm font-medium transition-colors ${
-                      pathname === item.href
+                    className={`block py-3 px-4 rounded-lg text-sm font-medium transition-colors ${pathname === item.href
                         ? 'bg-blue-900 text-white'
                         : 'text-gray-700 hover:bg-gray-100'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
