@@ -64,28 +64,42 @@ export const Hero: React.FC = () => {
 
           {/* Admissions, integrated naturally rather than as a separate shout */}
           {admissionsConfig.isOpen && (
-            <div className="mt-8 flex flex-col items-center gap-2 text-xs sm:flex-row sm:items-center sm:justify-center sm:gap-2 sm:text-sm">
-              <span
-                className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0"
-                aria-hidden="true"
-              />
+            <div className="mt-8 flex flex-col gap-2 text-xs sm:flex-row sm:flex-nowrap sm:items-center sm:justify-center sm:gap-2 sm:text-sm sm:whitespace-nowrap">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-1.5 h-1.5 flex-shrink-0 rotate-45 bg-gold-500"
+                  aria-hidden="true"
+                />
 
-              <span className="text-ivory-50 font-medium text-center">
-                {admissionsConfig.popup.title}
-              </span>
+                <span className="font-medium text-ivory-50">
+                  {admissionsConfig.popup.title}
+                </span>
+              </div>
 
-              <span className="text-ivory-100/60 text-center sm:text-left">
+              <span className="text-ivory-100/60">
                 — {admissionsConfig.announcement.message}
               </span>
             </div>
           )}
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+          <div className="mt-8 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center">
+            <Button
+              href={admissionsConfig.registrationUrl}
+              variant="secondary"
+              size="lg"
+              external
+              className="w-full sm:w-auto"
+            >
               Apply Now
             </Button>
-            <Button href="/about" variant="outlineLight" size="lg">
+
+            <Button
+              href="/about"
+              variant="outlineLight"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               Explore Our School
             </Button>
           </div>
