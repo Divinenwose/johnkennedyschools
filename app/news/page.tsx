@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -21,6 +22,7 @@ export default function NewsPage() {
       />
 
       {/* Featured Article — editorial, full width, not a boxed card */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-8">Featured Story</p>
@@ -51,8 +53,10 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* News Grid */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <SectionHeading subtitle="Latest Updates">Recent News</SectionHeading>
@@ -81,8 +85,10 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Categories */}
+      <Reveal>
       <section className="py-16 bg-ivory-100">
         <Container>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-6">Browse by Topic</p>
@@ -98,8 +104,10 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Note */}
+      <Reveal>
       <section className="pb-20 md:pb-28 bg-ivory-100">
         <Container size="md">
           <div className="border-l-2 border-gold-500 pl-6 py-1">
@@ -112,6 +120,7 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }

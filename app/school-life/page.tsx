@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -93,6 +94,7 @@ export default function SchoolLifePage() {
       />
 
       {/* Gallery */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <SectionHeading subtitle="Our Community">Life at John Kennedy</SectionHeading>
@@ -110,8 +112,10 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Activities — restrained icon + text list, not a shadow-card grid */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <SectionHeading subtitle="Programmes" align="center">Activities & Programmes</SectionHeading>
@@ -132,8 +136,10 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Sports */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -175,8 +181,10 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Arts & Culture */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -215,8 +223,10 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Student Leadership */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container size="md">
           <SectionHeading subtitle="Building Leaders" align="center">Student Leadership</SectionHeading>
@@ -247,8 +257,10 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* CTA */}
+      <Reveal>
       <section className="py-20 md:py-24 bg-navy-950">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -267,6 +279,7 @@ export default function SchoolLifePage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }

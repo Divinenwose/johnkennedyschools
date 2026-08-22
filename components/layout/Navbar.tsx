@@ -68,12 +68,12 @@ export const Navbar: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-9">
+            <div className="hidden xl:flex items-center gap-6 flex-shrink min-w-0">
               {navigationConfig.main.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors ${
+                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.06em] whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-navy-950'
                       : 'text-charcoal-600 hover:text-navy-900'
@@ -88,11 +88,18 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Desktop CTAs */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Button href={schoolConfig.resultPortalUrl} variant="outline" size="sm" external>
+            <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
+              <Button href={schoolConfig.resultPortalUrl} variant="outline" size="sm" external className="whitespace-nowrap">
                 Result Portal
               </Button>
-              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external>
+              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external className="whitespace-nowrap">
+                Apply Now
+              </Button>
+            </div>
+
+            {/* Tablet/small-desktop Navigation (lg–xl): CTAs only, full nav lives in the drawer */}
+            <div className="hidden lg:flex xl:hidden items-center gap-3 flex-shrink-0">
+              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external className="whitespace-nowrap">
                 Apply Now
               </Button>
             </div>
@@ -100,7 +107,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 -mr-2 text-navy-900"
+              className="xl:hidden p-2 -mr-2 text-navy-900 flex-shrink-0"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -111,7 +118,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 xl:hidden transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >

@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -98,6 +99,7 @@ export default function AdmissionsPage() {
       </PageHeader>
 
       {/* Nursery Admissions */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -143,8 +145,10 @@ export default function AdmissionsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* College Admissions */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -191,8 +195,10 @@ export default function AdmissionsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Admission Process — numbered sequence, since order genuinely matters here */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <SectionHeading subtitle="Step by Step" align="center">Admission Process</SectionHeading>
@@ -217,8 +223,10 @@ export default function AdmissionsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* FAQs */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container size="md">
           <SectionHeading subtitle="Common Questions" align="center">
@@ -235,8 +243,10 @@ export default function AdmissionsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* CTA */}
+      <Reveal>
       <section className="py-20 md:py-24 bg-navy-950">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -255,6 +265,7 @@ export default function AdmissionsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }

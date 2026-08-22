@@ -1,11 +1,16 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { motion, useReducedMotion } from 'framer-motion';
 import { schoolImages } from '@/config/images-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { Button } from '@/components/ui/Button';
 
 export const Hero: React.FC = () => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative min-h-[92svh] md:min-h-screen flex items-end overflow-hidden bg-navy-950">
       {/* Background Image */}
@@ -26,7 +31,12 @@ export const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 md:pb-24 pt-40">
-        <div className="max-w-2xl">
+        <motion.div
+          className="max-w-2xl"
+          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+          animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        >
           {/* Eyebrow: identity, established first */}
           <div className="flex items-center gap-3 mb-6">
             <span className="w-8 h-px bg-gold-400" aria-hidden="true" />
@@ -71,7 +81,7 @@ export const Hero: React.FC = () => {
               Explore Our School
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -11,24 +11,27 @@ import { NewsPreview } from '@/components/home/NewsPreview';
 import { Testimonials } from '@/components/home/Testimonials';
 import { ContactPreview } from '@/components/home/ContactPreview';
 import { AdmissionsPopup } from '@/components/home/AdmissionsPopup';
+import { IntroOverlay } from '@/components/home/IntroOverlay';
+import { Reveal } from '@/components/motion/Reveal';
 
 export default function Home() {
   return (
     <>
+      <IntroOverlay />
       <AdmissionsPopup />
       <main>
         <Hero />
         <SchoolHighlights />
-        <AboutPreview />
-        <Campuses />
-        <AcademicsPreview />
-        <WhyChooseUs />
-        <SchoolLifePreview />
-        <AdmissionsCTA />
-        <ResultsPortal />
-        <NewsPreview />
-        <Testimonials />
-        <ContactPreview />
+        <Reveal><AboutPreview /></Reveal>
+        <Reveal><Campuses /></Reveal>
+        <Reveal><AcademicsPreview /></Reveal>
+        <Reveal><WhyChooseUs /></Reveal>
+        <Reveal><SchoolLifePreview /></Reveal>
+        <Reveal><AdmissionsCTA /></Reveal>
+        <Reveal><ResultsPortal /></Reveal>
+        <Reveal><NewsPreview /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><ContactPreview /></Reveal>
       </main>
     </>
   );

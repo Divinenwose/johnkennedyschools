@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -87,6 +88,7 @@ export default function AcademicsPage() {
       />
 
       {/* Academic Programmes — alternating editorial panels, not cards */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <div className="space-y-20 md:space-y-28">
@@ -132,8 +134,10 @@ export default function AcademicsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Learning Methodology */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <SectionHeading subtitle="How We Teach" align="center">Learning Methodology</SectionHeading>
@@ -152,8 +156,10 @@ export default function AcademicsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Academic Support */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container size="md">
           <SectionHeading subtitle="Student Success" align="center">Academic Support</SectionHeading>
@@ -184,8 +190,10 @@ export default function AcademicsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Co-curricular */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <SectionHeading subtitle="Beyond Academics" align="center">Co-Curricular Development</SectionHeading>
@@ -221,8 +229,10 @@ export default function AcademicsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* CTA */}
+      <Reveal>
       <section className="py-20 md:py-24 bg-navy-950">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -243,6 +253,7 @@ export default function AcademicsPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }

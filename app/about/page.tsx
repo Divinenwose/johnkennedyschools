@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
@@ -54,6 +55,7 @@ export default function AboutPage() {
       />
 
       {/* Introduction — editorial, not a card grid */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -94,8 +96,10 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Mission & Vision — asymmetric, typography-led, not identical icon cards */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container>
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
@@ -122,8 +126,10 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Core Values */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <SectionHeading subtitle="What We Stand For" align="center" className="items-center">
@@ -146,8 +152,10 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* Learning Environment — editorial list, not repeated white cards */}
+      <Reveal>
       <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
         <Container size="md">
           <SectionHeading subtitle="Our Approach" align="center" className="items-center">
@@ -180,8 +188,10 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
 
       {/* CTA */}
+      <Reveal>
       <section className="py-20 md:py-24 bg-navy-950">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -199,6 +209,7 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }

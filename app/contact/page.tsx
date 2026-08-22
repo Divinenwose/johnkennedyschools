@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { Button } from '@/components/ui/Button';
+import { Reveal } from '@/components/motion/Reveal';
 import { MapPin, Phone } from 'lucide-react';
 import { schoolConfig } from '@/config/school-config';
 
@@ -50,7 +51,8 @@ export default function ContactPage() {
         description="Get in touch with John Kennedy International Schools. We're here to answer your questions and help you learn more about our school."
       />
 
-      <section className="py-20 md:py-28 bg-ivory-100">
+      <Reveal>
+        <section className="py-20 md:py-28 bg-ivory-100">
         <Container>
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
@@ -243,6 +245,7 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
+      </Reveal>
     </main>
   );
 }
