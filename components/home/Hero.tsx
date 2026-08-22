@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { schoolImages } from '@/config/images-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { Button } from '@/components/ui/Button';
@@ -16,11 +15,11 @@ export const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src={schoolImages.hero}
+          src="/images/hero/hero.jpeg"
           alt="Students at John Kennedy International Schools"
           fill
           priority
-          sizes="100vw"
+          sizes="80vw"
           className="object-cover"
         />
         {/* Cinematic scrim: strong from the left/bottom where the text sits,
@@ -30,7 +29,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 md:pb-24 pt-40">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 md:pb-24 pt-40 sm:pt-12 lg:pt-10">
         <motion.div
           className="max-w-2xl"
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
@@ -65,10 +64,17 @@ export const Hero: React.FC = () => {
 
           {/* Admissions, integrated naturally rather than as a separate shout */}
           {admissionsConfig.isOpen && (
-            <div className="mt-8 inline-flex items-center gap-2 text-xs sm:text-sm">
-              <span className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0" aria-hidden="true" />
-              <span className="text-ivory-50 font-medium">{admissionsConfig.popup.title}</span>
-              <span className="text-ivory-100/60 hidden sm:inline">— {admissionsConfig.announcement.message}</span>
+            <div className="mt-8 inline-flex flex-nowrap items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
+              <span
+                className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span className="text-ivory-50 font-medium">
+                {admissionsConfig.popup.title}
+              </span>
+              <span className="text-ivory-100/60">
+                — {admissionsConfig.announcement.message}
+              </span>
             </div>
           )}
 

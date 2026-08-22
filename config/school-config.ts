@@ -21,10 +21,10 @@ export const schoolConfig = {
     email: "", // To be provided later
   },
   
-  resultPortalUrl: "YOUR_RESULT_PORTAL_URL",
+  resultPortalUrl: "https://jkresultportal.vercel.app",
   
   socialLinks: {
-    facebook: "",
+    facebook: "https://www.facebook.com/100002312888872/posts/5460510577369318/?mibextid=rS40aB7S9Ucbxw6v",
     instagram: "",
     youtube: "",
     tiktok: "",

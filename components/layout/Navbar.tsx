@@ -37,11 +37,10 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`relative z-50 transition-all duration-300 border-b ${
-          isScrolled
+        className={`relative z-50 transition-all duration-300 border-b ${isScrolled
             ? 'bg-ivory-50/97 backdrop-blur-sm border-stone-300 shadow-[0_1px_0_0_rgba(16,35,63,0.04)]'
             : 'bg-ivory-50 border-transparent'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-20">
@@ -73,11 +72,10 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.06em] whitespace-nowrap transition-colors ${
-                    pathname === item.href
+                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.06em] whitespace-nowrap transition-colors ${pathname === item.href
                       ? 'text-navy-950'
                       : 'text-charcoal-600 hover:text-navy-900'
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {pathname === item.href && (
@@ -89,9 +87,17 @@ export const Navbar: React.FC = () => {
 
             {/* Desktop CTAs */}
             <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
-              <Button href={schoolConfig.resultPortalUrl} variant="outline" size="sm" external className="whitespace-nowrap">
-                Result Portal
-              </Button>
+              {/* 
+                <Button
+                  href={schoolConfig.resultPortalUrl}
+                  variant="outline"
+                  size="sm"
+                  external
+                  className="whitespace-nowrap"
+                >
+                  Result Portal
+                </Button>
+              */}
               <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external className="whitespace-nowrap">
                 Apply Now
               </Button>
@@ -118,18 +124,16 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 xl:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-50 xl:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <div
           className="absolute inset-0 bg-navy-950/60 backdrop-blur-sm"
           onClick={closeMobileMenu}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-full max-w-sm bg-navy-950 shadow-xl transform transition-transform duration-300 flex flex-col ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute right-0 top-0 bottom-0 w-full max-w-sm bg-navy-950 shadow-xl transform transition-transform duration-300 flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           {/* Mobile Header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-ivory-50/10">
@@ -169,9 +173,8 @@ export const Navbar: React.FC = () => {
                   <Link
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className={`flex items-center justify-between py-4 font-display text-xl transition-colors ${
-                      pathname === item.href ? 'text-gold-400' : 'text-ivory-50 hover:text-gold-300'
-                    }`}
+                    className={`flex items-center justify-between py-4 font-display text-xl transition-colors ${pathname === item.href ? 'text-gold-400' : 'text-ivory-50 hover:text-gold-300'
+                      }`}
                   >
                     <span>{item.label}</span>
                     <span className="text-xs font-sans text-ivory-50/30">0{index + 1}</span>
