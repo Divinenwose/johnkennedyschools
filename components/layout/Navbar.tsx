@@ -177,7 +177,6 @@ export const Navbar: React.FC = () => {
                       }`}
                   >
                     <span>{item.label}</span>
-                    <span className="text-xs font-sans text-ivory-50/30">0{index + 1}</span>
                   </Link>
                 </li>
               ))}

@@ -64,15 +64,17 @@ export const Hero: React.FC = () => {
 
           {/* Admissions, integrated naturally rather than as a separate shout */}
           {admissionsConfig.isOpen && (
-            <div className="mt-8 inline-flex flex-nowrap items-center gap-2 text-xs sm:text-sm whitespace-nowrap">
+            <div className="mt-8 flex flex-col items-center gap-2 text-xs sm:flex-row sm:items-center sm:justify-center sm:gap-2 sm:text-sm">
               <span
                 className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span className="text-ivory-50 font-medium">
+
+              <span className="text-ivory-50 font-medium text-center">
                 {admissionsConfig.popup.title}
               </span>
-              <span className="text-ivory-100/60">
+
+              <span className="text-ivory-100/60 text-center sm:text-left">
                 — {admissionsConfig.announcement.message}
               </span>
             </div>
