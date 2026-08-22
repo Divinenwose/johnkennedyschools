@@ -6,21 +6,21 @@ interface ContainerProps {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 
-export const Container: React.FC<ContainerProps> = ({ 
-  children, 
-  className = '', 
-  size = 'lg' 
+const sizes = {
+  sm: 'max-w-3xl',
+  md: 'max-w-5xl',
+  lg: 'max-w-7xl',
+  xl: 'max-w-[90rem]',
+  full: 'max-w-full',
+};
+
+export const Container: React.FC<ContainerProps> = ({
+  children,
+  className = '',
+  size = 'lg',
 }) => {
-  const sizes = {
-    sm: 'max-w-3xl',
-    md: 'max-w-5xl',
-    lg: 'max-w-7xl',
-    xl: 'max-w-8xl',
-    full: 'max-w-full',
-  };
-  
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${sizes[size]} ${className}`}>
+    <div className={`mx-auto px-6 sm:px-8 lg:px-12 ${sizes[size]} ${className}`}>
       {children}
     </div>
   );

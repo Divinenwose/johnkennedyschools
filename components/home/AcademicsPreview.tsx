@@ -1,10 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { schoolImages } from '@/config/images-config';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/Card';
 import { BookOpen, Brain, TrendingUp } from 'lucide-react';
 
 export const AcademicsPreview: React.FC = () => {
@@ -27,30 +25,28 @@ export const AcademicsPreview: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 md:py-28 bg-ivory-100">
       <Container>
-        <SectionHeading subtitle="Our Programmes">ACADEMICS</SectionHeading>
+        <SectionHeading subtitle="Our Programmes">A Clear Academic Pathway</SectionHeading>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 border-t border-stone-300">
           {academicLevels.map((level, index) => {
             const Icon = level.icon;
             return (
-              <Card key={index} hover>
-                <CardContent>
-                  <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-amber-500" />
-                  </div>
-                  <CardTitle>{level.title}</CardTitle>
-                  <CardDescription className="mt-3">
-                    {level.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div
+                key={index}
+                className={`py-8 px-2 md:px-8 ${index !== 0 ? 'md:border-l border-stone-300' : ''} border-b md:border-b-0`}
+              >
+                <span className="font-display text-3xl text-gold-500/50">0{index + 1}</span>
+                <Icon className="w-7 h-7 text-navy-800 mt-4 mb-4" strokeWidth={1.5} />
+                <h3 className="font-display text-xl text-navy-950 mb-2">{level.title}</h3>
+                <p className="text-charcoal-600 text-sm leading-relaxed">{level.description}</p>
+              </div>
             );
           })}
         </div>
 
-        <div className="text-center">
+        <div className="mt-12">
           <Link href="/academics">
             <Button variant="primary" size="md">
               Explore Our Academic Programmes →

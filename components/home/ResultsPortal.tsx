@@ -5,46 +5,43 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { Monitor } from 'lucide-react';
+import Image from 'next/image';
 
 export const ResultsPortal: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Image */}
-          <div className="relative">
-            <img
-              src={schoolImages.results}
-              alt="Student using computer to access results"
-              className="rounded-lg shadow-xl w-full h-auto"
-            />
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-900 rounded-lg -z-10 hidden md:block" />
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={schoolImages.results}
+                alt="Student using computer to access examination results"
+                fill
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
+              <span className="absolute -bottom-4 -left-4 w-16 h-16 border border-gold-500 -z-10 hidden md:block" aria-hidden="true" />
+            </div>
           </div>
 
           {/* Content */}
-          <div className="space-y-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg flex items-center justify-center">
-              <Monitor className="w-8 h-8 text-amber-500" />
-            </div>
+          <div className="lg:col-span-7">
+            <Monitor className="w-9 h-9 text-gold-600 mb-5" strokeWidth={1.5} />
 
-            <SectionHeading subtitle="Quick Access" align="left">
-              CHECK STUDENT RESULTS
-            </SectionHeading>
+            <SectionHeading subtitle="Quick Access">Check Student Results</SectionHeading>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Access the school's student result portal quickly and conveniently. 
-              View academic performance, examination results, and progress reports 
-              in real-time.
+            <p className="text-charcoal-700 leading-relaxed max-w-lg">
+              Access the school&apos;s student result portal quickly and conveniently. View
+              academic performance, examination results, and progress reports in real-time.
             </p>
 
-            <Button
-              href={schoolConfig.resultPortalUrl}
-              variant="primary"
-              size="lg"
-              external
-            >
-              Open Result Portal →
-            </Button>
+            <div className="mt-8">
+              <Button href={schoolConfig.resultPortalUrl} variant="primary" size="lg" external>
+                Open Result Portal →
+              </Button>
+            </div>
           </div>
         </div>
       </Container>

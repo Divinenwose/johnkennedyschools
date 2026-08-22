@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { GraduationCap, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { navigationConfig } from '@/config/navigation-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
@@ -36,72 +37,70 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-            ? 'bg-white shadow-lg'
-            : 'bg-white/95 backdrop-blur-sm shadow-sm'
-          }`}
+        className={`relative z-50 transition-all duration-300 border-b ${
+          isScrolled
+            ? 'bg-ivory-50/97 backdrop-blur-sm border-stone-300 shadow-[0_1px_0_0_rgba(16,35,63,0.04)]'
+            : 'bg-ivory-50 border-transparent'
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 flex items-center justify-center">
-                <img
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                <Image
                   src="/images/logo.png"
-                  alt="John Kennedy International Schools logo"
+                  alt="John Kennedy International Schools crest"
+                  width={44}
+                  height={44}
                   className="w-full h-full object-contain"
+                  priority
                 />
               </div>
-              <div className="hidden sm:block">
-                <h1 className="text-lg font-bold text-blue-900 leading-tight">
+              <div className="hidden sm:block leading-none">
+                <span className="block font-display text-[15px] font-semibold text-navy-950 tracking-wide">
                   JOHN KENNEDY
-                </h1>
-                <p className="text-xs text-amber-600 font-semibold">
-                  INTERNATIONAL SCHOOLS
-                </p>
+                </span>
+                <span className="block text-[10px] text-gold-600 font-semibold uppercase tracking-[0.18em] mt-1">
+                  International Schools
+                </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center gap-9">
               {navigationConfig.main.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-amber-600 ${pathname === item.href
-                      ? 'text-amber-600'
-                      : 'text-gray-700'
-                    }`}
+                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors ${
+                    pathname === item.href
+                      ? 'text-navy-950'
+                      : 'text-charcoal-600 hover:text-navy-900'
+                  }`}
                 >
                   {item.label}
+                  {pathname === item.href && (
+                    <span className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-gold-500" aria-hidden="true" />
+                  )}
                 </Link>
               ))}
             </div>
 
             {/* Desktop CTAs */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <Button
-                href={schoolConfig.resultPortalUrl}
-                variant="outline"
-                size="sm"
-                external
-              >
-                Result Portal →
+            <div className="hidden lg:flex items-center gap-3">
+              <Button href={schoolConfig.resultPortalUrl} variant="outline" size="sm" external>
+                Result Portal
               </Button>
-              <Button
-                href={admissionsConfig.registrationUrl}
-                variant="primary"
-                size="sm"
-                external
-              >
-                Register Now
+              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external>
+                Apply Now
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-gray-700 hover:text-amber-600"
+              className="lg:hidden p-2 -mr-2 text-navy-900"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -112,84 +111,91 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
       >
         <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          className="absolute inset-0 bg-navy-950/60 backdrop-blur-sm"
           onClick={closeMobileMenu}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-80 bg-white shadow-xl transform transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
+          className={`absolute right-0 top-0 bottom-0 w-full max-w-sm bg-navy-950 shadow-xl transform transition-transform duration-300 flex flex-col ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
         >
-          <div className="flex flex-col h-full">
-            {/* Mobile Header */}
-            <div className="flex items-center justify-between p-6 border-b">
-              <div className="flex items-center space-x-3">
-                <div className="bg-blue-900 p-2 rounded-lg">
-                  <GraduationCap className="w-6 h-6 text-amber-500" />
-                </div>
-                <div>
-                  <h1 className="text-sm font-bold text-blue-900 leading-tight">
-                    JOHN KENNEDY
-                  </h1>
-                  <p className="text-xs text-amber-600 font-semibold">
-                    INTERNATIONAL SCHOOLS
-                  </p>
-                </div>
+          {/* Mobile Header */}
+          <div className="flex items-center justify-between px-6 py-6 border-b border-ivory-50/10">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 flex items-center justify-center bg-ivory-50 flex-shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="John Kennedy International Schools crest"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
               </div>
-              <button
-                onClick={closeMobileMenu}
-                className="p-2 text-gray-700 hover:text-amber-600"
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
+              <div className="leading-none">
+                <span className="block font-display text-sm font-semibold text-ivory-50 tracking-wide">
+                  JOHN KENNEDY
+                </span>
+                <span className="block text-[10px] text-gold-400 font-semibold uppercase tracking-[0.18em] mt-1">
+                  International Schools
+                </span>
+              </div>
             </div>
+            <button
+              onClick={closeMobileMenu}
+              className="p-2 text-ivory-100 hover:text-gold-400"
+              aria-label="Close menu"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
-            {/* Mobile Navigation */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <nav className="space-y-4">
-                {navigationConfig.main.map((item) => (
+          {/* Mobile Navigation */}
+          <nav className="flex-1 overflow-y-auto px-6 py-8">
+            <ul className="space-y-1">
+              {navigationConfig.main.map((item, index) => (
+                <li key={item.href} className="border-b border-ivory-50/10">
                   <Link
-                    key={item.href}
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className={`block py-3 px-4 rounded-lg text-sm font-medium transition-colors ${pathname === item.href
-                        ? 'bg-blue-900 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
-                      }`}
+                    className={`flex items-center justify-between py-4 font-display text-xl transition-colors ${
+                      pathname === item.href ? 'text-gold-400' : 'text-ivory-50 hover:text-gold-300'
+                    }`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    <span className="text-xs font-sans text-ivory-50/30">0{index + 1}</span>
                   </Link>
-                ))}
-              </nav>
-            </div>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* Mobile CTAs */}
-            <div className="p-6 border-t space-y-3">
-              <Button
-                href={schoolConfig.resultPortalUrl}
-                variant="outline"
-                size="md"
-                external
-                className="w-full"
-                onClick={closeMobileMenu}
-              >
-                Result Portal →
-              </Button>
-              <Button
-                href={admissionsConfig.registrationUrl}
-                variant="primary"
-                size="md"
-                external
-                className="w-full"
-                onClick={closeMobileMenu}
-              >
-                Register Now
-              </Button>
-            </div>
+          {/* Mobile CTAs */}
+          <div className="px-6 py-6 border-t border-ivory-50/10 space-y-3">
+            <Button
+              href={admissionsConfig.registrationUrl}
+              variant="secondary"
+              size="md"
+              external
+              className="w-full"
+              onClick={closeMobileMenu}
+            >
+              Apply Now
+            </Button>
+            <Button
+              href={schoolConfig.resultPortalUrl}
+              variant="outlineLight"
+              size="md"
+              external
+              className="w-full"
+              onClick={closeMobileMenu}
+            >
+              Result Portal
+            </Button>
           </div>
         </div>
       </div>

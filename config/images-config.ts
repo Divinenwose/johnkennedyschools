@@ -15,6 +15,15 @@ export const schoolImages = {
   admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
   results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
   
+  // Portrait placeholders for testimonials — replace with real parent
+  // photographs when available. Same warm, natural-light editorial
+  // treatment as the rest of the set for visual consistency.
+  portraits: {
+    parent1: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80",
+    parent2: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    parent3: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+  },
+
   // Gallery images
   gallery: {
     learning: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",

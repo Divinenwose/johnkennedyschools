@@ -1,40 +1,45 @@
 import React from 'react';
+import Image from 'next/image';
 import { testimonialsConfig } from '@/config/testimonials-config';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card, CardContent } from '@/components/ui/Card';
-import { Quote } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
       <Container>
-        <SectionHeading subtitle="Parent Voices">TESTIMONIALS</SectionHeading>
+        <SectionHeading subtitle="Parent Voices" align="center">
+          What Our Families Say
+        </SectionHeading>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-x-10 gap-y-12 mt-4">
           {testimonialsConfig.testimonials.map((testimonial) => (
-            <Card key={testimonial.id} hover>
-              <CardContent>
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center">
-                      <Quote className="w-8 h-8 text-amber-500" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-gray-700 italic mb-4">
-                      "{testimonial.testimonial}"
-                    </p>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-sm text-gray-500">{testimonial.role}</p>
-                    </div>
-                  </div>
+            <div key={testimonial.id} className="flex flex-col">
+              <span
+                className="font-display text-6xl text-gold-500/30 leading-none mb-2"
+                aria-hidden="true"
+              >
+                &ldquo;
+              </span>
+              <p className="text-charcoal-700 leading-relaxed italic flex-1">
+                {testimonial.testimonial}
+              </p>
+              <div className="flex items-center gap-3 mt-6 pt-6 border-t border-stone-300">
+                <div className="relative w-11 h-11 flex-shrink-0 overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt=""
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <p className="font-semibold text-navy-950 text-sm">{testimonial.name}</p>
+                  <p className="text-charcoal-500 text-xs">{testimonial.role}</p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </Container>

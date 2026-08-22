@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface CardProps {
   children: React.ReactNode;
@@ -7,29 +8,33 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ children, className = '', hover = false }) => {
-  const baseStyles = 'bg-white rounded-lg shadow-md overflow-hidden';
-  const hoverStyles = hover ? 'hover:shadow-lg transition-shadow duration-200' : '';
-  
-  return (
-    <div className={`${baseStyles} ${hoverStyles} ${className}`}>
-      {children}
-    </div>
-  );
+  const baseStyles = 'bg-ivory-50 border border-stone-300 overflow-hidden';
+  const hoverStyles = hover ? 'transition-colors duration-200 hover:border-navy-800/40' : '';
+
+  return <div className={`${baseStyles} ${hoverStyles} ${className}`}>{children}</div>;
 };
 
 interface CardImageProps {
   src: string;
   alt: string;
   className?: string;
+  aspect?: string;
 }
 
-export const CardImage: React.FC<CardImageProps> = ({ src, alt, className = '' }) => {
+export const CardImage: React.FC<CardImageProps> = ({
+  src,
+  alt,
+  className = '',
+  aspect = 'aspect-[4/3]',
+}) => {
   return (
-    <div className={`relative overflow-hidden ${className}`}>
-      <img
+    <div className={`relative overflow-hidden ${aspect} ${className}`}>
+      <Image
         src={src}
         alt={alt}
-        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        fill
+        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+        className="object-cover"
       />
     </div>
   );
@@ -50,7 +55,11 @@ interface CardTitleProps {
 }
 
 export const CardTitle: React.FC<CardTitleProps> = ({ children, className = '' }) => {
-  return <h3 className={`text-xl font-bold text-gray-900 mb-2 ${className}`}>{children}</h3>;
+  return (
+    <h3 className={`font-display text-xl font-semibold text-navy-950 mb-2 ${className}`}>
+      {children}
+    </h3>
+  );
 };
 
 interface CardDescriptionProps {
@@ -59,5 +68,5 @@ interface CardDescriptionProps {
 }
 
 export const CardDescription: React.FC<CardDescriptionProps> = ({ children, className = '' }) => {
-  return <div className={`text-gray-600 ${className}`}>{children}</div>;
+  return <div className={`text-charcoal-600 leading-relaxed ${className}`}>{children}</div>;
 };

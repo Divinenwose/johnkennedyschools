@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts (via @fontsource) — no external requests at build or runtime */
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/500-italic.css";
+@import "@fontsource/playfair-display/600-italic.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+/* ==========================================================================
+   JOHN KENNEDY INTERNATIONAL SCHOOLS — DESIGN TOKENS
+   Derived from the school crest: deep academic navy + warm gold + ivory.
+   Gold is a restrained accent, not a dominant color.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Navy — primary brand color, drawn from the crest */
+  --navy-950: #0a1830;
+  --navy-900: #10233f;
+  --navy-800: #1b3455;
+  --navy-700: #2b4a73;
+  --navy-600: #3e5f8a;
+
+  /* Gold — restrained accent only, drawn from the crest ribbon */
+  --gold-300: #e7d29e;
+  --gold-400: #d1af64;
+  --gold-500: #bc9a4e;
+  --gold-600: #96792f;
+  --gold-700: #785f23;
+
+  /* Ivory & neutrals — warm, not clinical white/gray */
+  --ivory-50: #fdfbf6;
+  --ivory-100: #f8f3e8;
+  --ivory-200: #efe6d2;
+  --stone-300: #ddd2b4;
+  --stone-400: #b9ac8c;
+
+  /* Charcoal — body text, not pure black or Tailwind gray */
+  --charcoal-900: #201d19;
+  --charcoal-700: #423d35;
+  --charcoal-600: #5c554a;
+  --charcoal-400: #8a8171;
+
+  /* Semantic aliases */
+  --background: var(--ivory-100);
+  --foreground: var(--charcoal-900);
+
+  /* Fonts */
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-navy-600: var(--navy-600);
+
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+
+  --color-ivory-50: var(--ivory-50);
+  --color-ivory-100: var(--ivory-100);
+  --color-ivory-200: var(--ivory-200);
+  --color-stone-300: var(--stone-300);
+  --color-stone-400: var(--stone-400);
+
+  --color-charcoal-900: var(--charcoal-900);
+  --color-charcoal-700: var(--charcoal-700);
+  --color-charcoal-600: var(--charcoal-600);
+  --color-charcoal-400: var(--charcoal-400);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  border-color: var(--stone-300);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Visible keyboard focus everywhere — accessibility, not decoration */
+:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Signature motif: a slim rule with a gold diamond mark, echoing the
+   ribbon banner on the school crest. Used sparingly at real section
+   transitions — the site's one recurring, recognizable device. */
+.crest-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.crest-divider::before,
+.crest-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--stone-300);
+}
+.crest-divider--start::before {
+  display: none;
+}
+.crest-divider--start {
+  justify-content: flex-start;
+}
+.crest-mark {
+  width: 7px;
+  height: 7px;
+  background: var(--gold-500);
+  transform: rotate(45deg);
+  flex-shrink: 0;
 }
