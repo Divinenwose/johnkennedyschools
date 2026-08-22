@@ -18,7 +18,7 @@ export const schoolConfig = {
       "08068252501",
       "08098884407",
     ],
-    email: "", // To be provided later
+    email: "johnkennedyschools@gmail.com", 
   },
   
   resultPortalUrl: "https://jkresultportal.vercel.app",
