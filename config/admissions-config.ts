@@ -1,6 +1,8 @@
 export const admissionsConfig = {
   isOpen: true,
-  registrationUrl: "YOUR_ADMISSION_REGISTRATION_URL",
+  // Now a real in-site page (see app/admissions/register) — was a
+  // placeholder external URL with no destination.
+  registrationUrl: "/admissions/register",
   
   popup: {
     title: "WE'RE ENROLLING!",

@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { newsConfig } from '@/config/news-config';
+import { schoolImages } from '@/config/images-config';
 import { Calendar } from 'lucide-react';
 import Image from 'next/image';
 
@@ -19,6 +20,8 @@ export default function NewsPage() {
         eyebrow="Stay Informed"
         title="News & Events"
         description="Stay updated with the latest news, events, and achievements from John Kennedy International Schools."
+        image={schoolImages.pageHeroes.news}
+        overlay="diagonal"
       />
 
       {/* Featured Article — editorial, full width, not a boxed card */}

@@ -9,6 +9,7 @@ import { navigationConfig } from '@/config/navigation-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,11 +44,11 @@ export const Navbar: React.FC = () => {
             : 'bg-ivory-50 border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <Container>
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+            <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
+              <div className="w-10 h-10 lg:w-11 lg:h-11 flex items-center justify-center flex-shrink-0">
                 <Image
                   src="/images/logo.png"
                   alt="John Kennedy International Schools crest"
@@ -57,23 +58,23 @@ export const Navbar: React.FC = () => {
                   priority
                 />
               </div>
-              <div className="hidden sm:block leading-none">
-                <span className="block font-display text-[15px] font-semibold text-navy-950 tracking-wide">
+              <div className="hidden sm:block leading-none whitespace-nowrap">
+                <span className="block font-display text-sm lg:text-[15px] font-semibold text-navy-950 tracking-wide">
                   JOHN KENNEDY
                 </span>
-                <span className="block text-[10px] text-gold-600 font-semibold uppercase tracking-[0.18em] mt-1">
+                <span className="hidden lg:block text-[10px] text-gold-600 font-semibold uppercase tracking-[0.16em] mt-1">
                   International Schools
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center gap-6 flex-shrink min-w-0">
+            <div className="hidden lg:flex items-center gap-5 flex-shrink min-w-0 mx-4">
               {navigationConfig.main.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative py-2 text-[13px] font-medium uppercase tracking-[0.06em] whitespace-nowrap transition-colors ${
+                  className={`relative py-2 text-[12px] font-medium uppercase tracking-[0.05em] whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-navy-950'
                       : 'text-charcoal-600 hover:text-navy-900'
@@ -87,19 +88,18 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
 
-            {/* Desktop CTAs */}
-            <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
-              <Button href={schoolConfig.resultPortalUrl} variant="outline" size="sm" external className="whitespace-nowrap">
+            {/* Desktop CTAs — Result Portal kept as a lighter text link so
+                the single primary button (Apply Now) has room to breathe */}
+            <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+              <a
+                href={schoolConfig.resultPortalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[12px] font-medium uppercase tracking-[0.05em] whitespace-nowrap text-charcoal-600 hover:text-navy-900 transition-colors"
+              >
                 Result Portal
-              </Button>
-              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external className="whitespace-nowrap">
-                Apply Now
-              </Button>
-            </div>
-
-            {/* Tablet/small-desktop Navigation (lg–xl): CTAs only, full nav lives in the drawer */}
-            <div className="hidden lg:flex xl:hidden items-center gap-3 flex-shrink-0">
-              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" external className="whitespace-nowrap">
+              </a>
+              <Button href={admissionsConfig.registrationUrl} variant="primary" size="sm" className="whitespace-nowrap">
                 Apply Now
               </Button>
             </div>
@@ -107,18 +107,18 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="xl:hidden p-2 -mr-2 text-navy-900 flex-shrink-0"
+              className="lg:hidden p-2 -mr-2 text-navy-900 flex-shrink-0"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
             </button>
           </div>
-        </div>
+        </Container>
       </nav>
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 xl:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -187,7 +187,6 @@ export const Navbar: React.FC = () => {
               href={admissionsConfig.registrationUrl}
               variant="secondary"
               size="md"
-              external
               className="w-full"
               onClick={closeMobileMenu}
             >

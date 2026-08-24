@@ -30,7 +30,7 @@ export const AdmissionsPopup: React.FC = () => {
 
   const handleRegister = () => {
     localStorage.setItem(admissionsConfig.popup.localStorageKey, 'true');
-    window.open(admissionsConfig.registrationUrl, '_blank');
+    window.location.href = admissionsConfig.registrationUrl;
   };
 
   const handleMaybeLater = () => {

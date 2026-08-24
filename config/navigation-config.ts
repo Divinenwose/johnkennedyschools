@@ -1,11 +1,11 @@
 export const navigationConfig = {
   main: [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    { label: "About", href: "/about" },
     { label: "Academics", href: "/academics" },
     { label: "Admissions", href: "/admissions" },
     { label: "School Life", href: "/school-life" },
-    { label: "News & Events", href: "/news" },
+    { label: "News", href: "/news" },
     { label: "Contact", href: "/contact" },
   ],
   

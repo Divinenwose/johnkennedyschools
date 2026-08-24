@@ -92,8 +92,10 @@ export default function AdmissionsPage() {
         eyebrow="Join Our Community"
         title="Admissions"
         description="Give your child a strong foundation for the future. Join the John Kennedy International Schools community."
+        image={schoolImages.pageHeroes.admissions}
+        overlay="standard"
       >
-        <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+        <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
           Register Now →
         </Button>
       </PageHeader>
@@ -137,7 +139,7 @@ export default function AdmissionsPage() {
                 </div>
               </div>
               <div className="mt-8">
-                <Button href={admissionsConfig.registrationUrl} variant="primary" size="md" external>
+                <Button href={admissionsConfig.registrationUrl} variant="primary" size="md">
                   Apply for Nursery →
                 </Button>
               </div>
@@ -176,7 +178,7 @@ export default function AdmissionsPage() {
                 </div>
               </div>
               <div className="mt-8">
-                <Button href={admissionsConfig.registrationUrl} variant="primary" size="md" external>
+                <Button href={admissionsConfig.registrationUrl} variant="primary" size="md">
                   Apply for College →
                 </Button>
               </div>
@@ -259,7 +261,7 @@ export default function AdmissionsPage() {
                 towards your child&apos;s future today.
               </p>
             </div>
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
               Register Now →
             </Button>
           </div>

@@ -24,7 +24,7 @@ const variants = {
 };
 
 const sizes = {
-  sm: 'px-4 py-2 text-xs uppercase tracking-widest',
+  sm: 'px-3.5 py-2 text-[11px] uppercase tracking-wider',
   md: 'px-6 py-3 text-sm uppercase tracking-widest',
   lg: 'px-8 py-4 text-sm uppercase tracking-[0.15em]',
 };

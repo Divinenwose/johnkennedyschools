@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { admissionsConfig } from '@/config/admissions-config';
+import { Container } from '@/components/ui/Container';
 
 export const AnnouncementBar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +24,7 @@ export const AnnouncementBar: React.FC = () => {
 
   return (
     <div className="bg-navy-950 text-ivory-100 border-b border-gold-500/30">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-2.5">
+      <Container className="py-2.5">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
             <span className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0" aria-hidden="true" />
@@ -38,8 +39,6 @@ export const AnnouncementBar: React.FC = () => {
           <div className="flex items-center gap-4 flex-shrink-0">
             <a
               href={admissionsConfig.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-xs sm:text-sm font-semibold text-gold-400 hover:text-gold-300 underline underline-offset-4 decoration-gold-500/40 transition-colors whitespace-nowrap"
             >
               {admissionsConfig.announcement.cta} →
@@ -53,7 +52,7 @@ export const AnnouncementBar: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

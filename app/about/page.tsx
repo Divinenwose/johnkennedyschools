@@ -52,6 +52,8 @@ export default function AboutPage() {
         eyebrow="Our Story"
         title="About John Kennedy International Schools"
         description="Discover our commitment to excellence, character development, and preparing students for a bright future."
+        image={schoolImages.pageHeroes.about}
+        overlay="standard"
       />
 
       {/* Introduction — editorial, not a card grid */}

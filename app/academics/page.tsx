@@ -85,6 +85,8 @@ export default function AcademicsPage() {
         eyebrow="Our Curriculum"
         title="Academic Programmes"
         description="A comprehensive educational approach designed to nurture academic excellence and character development, from nursery through senior secondary."
+        image={schoolImages.pageHeroes.academics}
+        overlay="deep"
       />
 
       {/* Academic Programmes — alternating editorial panels, not cards */}

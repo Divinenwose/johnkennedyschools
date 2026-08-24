@@ -91,6 +91,8 @@ export default function SchoolLifePage() {
         eyebrow="Beyond the Classroom"
         title="School Life"
         description="A rich and vibrant school life that nurtures talents, builds character, and creates lasting memories."
+        image={schoolImages.pageHeroes.schoolLife}
+        overlay="deep"
       />
 
       {/* Gallery */}

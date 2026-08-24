@@ -6,6 +6,7 @@ import { navigationConfig } from '@/config/navigation-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -14,20 +15,20 @@ export const Footer: React.FC = () => {
     <footer className="bg-navy-950 text-ivory-100">
       {/* Closing CTA strip */}
       <div className="border-b border-ivory-50/10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <Container className="py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-gold-400 mb-2">Admissions Open</p>
             <h3 className="font-display text-2xl md:text-3xl text-ivory-50">
               Begin your child&apos;s journey with us.
             </h3>
           </div>
-          <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+          <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
             Start Your Application →
           </Button>
-        </div>
+        </Container>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+      <Container className="py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* School Info */}
           <div className="space-y-4 lg:col-span-1">
@@ -183,7 +184,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

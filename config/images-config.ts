@@ -14,6 +14,17 @@ export const schoolImages = {
   about: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80",
   admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
   results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+
+  // Higher-resolution variants of the same photographs, sized for
+  // full-bleed page header banners rather than small content slots.
+  pageHeroes: {
+    about: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1920&q=80",
+    academics: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80",
+    admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1920&q=80",
+    schoolLife: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=1920&q=80",
+    news: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1920&q=80",
+    contact: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80",
+  },
   
   // Portrait placeholders for testimonials — replace with real parent
   // photographs when available. Same warm, natural-light editorial

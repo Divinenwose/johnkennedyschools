@@ -37,7 +37,7 @@ export const AdmissionsCTA: React.FC = () => {
             excellence, character, and care.
           </p>
           <div className="mt-9">
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
               Register Now →
             </Button>
           </div>

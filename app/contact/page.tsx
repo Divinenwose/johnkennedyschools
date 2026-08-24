@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/motion/Reveal';
 import { MapPin, Phone } from 'lucide-react';
 import { schoolConfig } from '@/config/school-config';
+import { schoolImages } from '@/config/images-config';
 
 const inputStyles =
   'w-full px-4 py-3 bg-ivory-50 border border-stone-300 text-sm text-charcoal-900 placeholder:text-charcoal-400 focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-1 outline-none transition-colors';
@@ -49,6 +50,8 @@ export default function ContactPage() {
         eyebrow="We'd Love to Hear From You"
         title="Contact Us"
         description="Get in touch with John Kennedy International Schools. We're here to answer your questions and help you learn more about our school."
+        image={schoolImages.pageHeroes.contact}
+        overlay="diagonal"
       />
 
       <Reveal>

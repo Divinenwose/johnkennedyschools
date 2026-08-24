@@ -7,6 +7,7 @@ import { schoolImages } from '@/config/images-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 
 export const Hero: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -30,7 +31,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 md:pb-24 pt-40">
+      <Container className="relative z-10 w-full pb-16 md:pb-24 pt-40">
         <motion.div
           className="max-w-2xl"
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
@@ -74,7 +75,7 @@ export const Hero: React.FC = () => {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" external>
+            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
               Apply Now
             </Button>
             <Button href="/about" variant="outlineLight" size="lg">
@@ -82,7 +83,7 @@ export const Hero: React.FC = () => {
             </Button>
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };

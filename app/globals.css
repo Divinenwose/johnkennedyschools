@@ -129,9 +129,100 @@ h1, h2, h3, h4 {
   }
 }
 
-/* Signature motif: a slim rule with a gold diamond mark, echoing the
-   ribbon banner on the school crest. Used sparingly at real section
-   transitions — the site's one recurring, recognizable device. */
+/* ==========================================================================
+   INTRO OVERLAY (loading screen)
+   Server-rendered markup + a blocking inline script in <head> (see
+   app/layout.tsx) — not a React component — so there is no flash of real
+   content on first paint, and no flash of the overlay itself on repeat
+   navigations within the same tab. The "intro-seen" class is added to
+   <html> by that script before anything paints if this tab has already
+   shown the overlay this session.
+   ========================================================================== */
+#site-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-950);
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+html.intro-seen #site-intro-overlay {
+  display: none;
+}
+
+#site-intro-overlay.intro-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#site-intro-overlay .intro-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: intro-mark-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#site-intro-overlay .intro-mark img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+#site-intro-overlay .intro-wordmark {
+  margin-top: 1rem;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold-300);
+  text-align: center;
+  animation: intro-mark-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#site-intro-overlay .intro-progress-track {
+  margin-top: 1.75rem;
+  width: 160px;
+  height: 2px;
+  background: color-mix(in srgb, var(--ivory-50) 12%, transparent);
+  overflow: hidden;
+}
+
+#site-intro-overlay .intro-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold-500);
+  animation: intro-progress 7s linear forwards;
+}
+
+@keyframes intro-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-intro-overlay {
+    display: none !important;
+  }
+}
 .crest-divider {
   display: flex;
   align-items: center;

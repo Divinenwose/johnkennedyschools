@@ -11,13 +11,11 @@ import { NewsPreview } from '@/components/home/NewsPreview';
 import { Testimonials } from '@/components/home/Testimonials';
 import { ContactPreview } from '@/components/home/ContactPreview';
 import { AdmissionsPopup } from '@/components/home/AdmissionsPopup';
-import { IntroOverlay } from '@/components/home/IntroOverlay';
 import { Reveal } from '@/components/motion/Reveal';
 
 export default function Home() {
   return (
     <>
-      <IntroOverlay />
       <AdmissionsPopup />
       <main>
         <Hero />
