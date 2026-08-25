@@ -38,11 +38,10 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`relative z-50 transition-all duration-300 border-b ${
-          isScrolled
+        className={`relative z-50 transition-all duration-300 border-b ${isScrolled
             ? 'bg-ivory-50/97 backdrop-blur-sm border-stone-300 shadow-[0_1px_0_0_rgba(16,35,63,0.04)]'
             : 'bg-ivory-50 border-transparent'
-        }`}
+          }`}
       >
         <Container>
           <div className="flex items-center justify-between h-20">
@@ -78,7 +77,7 @@ export const Navbar: React.FC = () => {
                     pathname === item.href
                       ? 'text-navy-950'
                       : 'text-charcoal-600 hover:text-navy-900'
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {pathname === item.href && (
@@ -127,9 +126,8 @@ export const Navbar: React.FC = () => {
           onClick={closeMobileMenu}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-full max-w-sm bg-navy-950 shadow-xl transform transition-transform duration-300 flex flex-col ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute right-0 top-0 bottom-0 w-full max-w-sm bg-navy-950 shadow-xl transform transition-transform duration-300 flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           {/* Mobile Header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-ivory-50/10">
@@ -164,17 +162,15 @@ export const Navbar: React.FC = () => {
           {/* Mobile Navigation */}
           <nav className="flex-1 overflow-y-auto px-6 py-8">
             <ul className="space-y-1">
-              {navigationConfig.main.map((item, index) => (
+              {navigationConfig.main.map((item) => (
                 <li key={item.href} className="border-b border-ivory-50/10">
                   <Link
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className={`flex items-center justify-between py-4 font-display text-xl transition-colors ${
-                      pathname === item.href ? 'text-gold-400' : 'text-ivory-50 hover:text-gold-300'
-                    }`}
+                    className={`flex items-center justify-between py-4 font-display text-xl transition-colors ${pathname === item.href ? 'text-gold-400' : 'text-ivory-50 hover:text-gold-300'
+                      }`}
                   >
                     <span>{item.label}</span>
-                    <span className="text-xs font-sans text-ivory-50/30">0{index + 1}</span>
                   </Link>
                 </li>
               ))}

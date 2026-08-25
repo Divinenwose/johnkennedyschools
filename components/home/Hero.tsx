@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { schoolImages } from '@/config/images-config';
 import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { Button } from '@/components/ui/Button';
@@ -17,11 +16,11 @@ export const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src={schoolImages.hero}
+          src="/images/hero/hero.jpeg"
           alt="Students at John Kennedy International Schools"
           fill
           priority
-          sizes="100vw"
+          sizes="80vw"
           className="object-cover"
         />
         {/* Cinematic scrim: strong from the left/bottom where the text sits,
@@ -66,19 +65,41 @@ export const Hero: React.FC = () => {
 
           {/* Admissions, integrated naturally rather than as a separate shout */}
           {admissionsConfig.isOpen && (
-            <div className="mt-8 inline-flex items-center gap-2 text-xs sm:text-sm">
-              <span className="w-1.5 h-1.5 bg-gold-500 rotate-45 flex-shrink-0" aria-hidden="true" />
-              <span className="text-ivory-50 font-medium">{admissionsConfig.popup.title}</span>
-              <span className="text-ivory-100/60 hidden sm:inline">— {admissionsConfig.announcement.message}</span>
+            <div className="mt-8 flex flex-col gap-2 text-xs sm:flex-row sm:flex-nowrap sm:items-center sm:justify-center sm:gap-2 sm:text-sm sm:whitespace-nowrap">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-1.5 h-1.5 flex-shrink-0 rotate-45 bg-gold-500"
+                  aria-hidden="true"
+                />
+
+                <span className="font-medium text-ivory-50">
+                  {admissionsConfig.popup.title}
+                </span>
+              </div>
+
+              <span className="text-ivory-100/60">
+                — {admissionsConfig.announcement.message}
+              </span>
             </div>
           )}
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
+          <div className="mt-8 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center">
+            <Button
+              href={admissionsConfig.registrationUrl}
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               Apply Now
             </Button>
-            <Button href="/about" variant="outlineLight" size="lg">
+
+            <Button
+              href="/about"
+              variant="outlineLight"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               Explore Our School
             </Button>
           </div>
