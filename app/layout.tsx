@@ -34,7 +34,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             this session, mark <html> so the CSS rule hides the overlay
             before it ever paints — zero flash on repeat navigations. */}
         <script
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `try{if(sessionStorage.getItem('jkis-intro-seen')){document.documentElement.classList.add('intro-seen')}}catch(e){}`,
           }}
@@ -50,7 +49,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div id="site-intro-overlay" aria-hidden="true">
           <div className="intro-mark">
             {/* Plain <img>, not next/image: this needs to exist in the raw
-                server-rendered HTML with no client hydration dependency. */}
+                server-rendered HTML with no client hydration dependency,
+                so Next's image optimization (which requires the client
+                runtime) doesn't apply here. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/logo.png" alt="" />
             <span className="intro-wordmark">John Kennedy International Schools</span>
             <span className="intro-progress-track">
@@ -59,7 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         <script
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `(function(){try{if(!sessionStorage.getItem('jkis-intro-seen')){sessionStorage.setItem('jkis-intro-seen','1');document.documentElement.style.overflow='hidden';setTimeout(function(){var el=document.getElementById('site-intro-overlay');if(el){el.classList.add('intro-fade-out');document.documentElement.style.overflow='';setTimeout(function(){el.style.display='none'},650)}},7000)}}catch(e){}})();`,
           }}

@@ -47,7 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener noreferrer' : undefined}
         className={buttonClassName}
-        {...(props as any)}
+        {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}
       </a>

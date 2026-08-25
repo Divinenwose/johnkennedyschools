@@ -72,11 +72,11 @@ export const SuccessView: React.FC<SuccessViewProps> = ({ record }) => {
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 bg-gold-500 rotate-45 mt-1.5 flex-shrink-0" aria-hidden="true" />
-            <span>The school's admissions office will contact you regarding assessment scheduling.</span>
+            <span>The school&apos;s admissions office will contact you regarding assessment scheduling.</span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 bg-gold-500 rotate-45 mt-1.5 flex-shrink-0" aria-hidden="true" />
-            <span>Keep your application number — you'll need it for any follow-up enquiries.</span>
+            <span>Keep your application number — you&apos;ll need it for any follow-up enquiries.</span>
           </li>
         </ul>
       </div>

@@ -24,14 +24,19 @@ export const RegistrationForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedRecord, setSubmittedRecord] = useState<ApplicationRecord | null>(null);
 
-  const update = <T extends keyof RegistrationFormData>(
+  // Only the string-only sections flow through this generic setter —
+  // `documents` (File[]) and the root `declaration` (boolean) are set
+  // directly via setData elsewhere.
+  type StringSection = 'student' | 'guardian' | 'emergencyContact' | 'academic' | 'additional';
+
+  const update = <T extends StringSection>(
     section: T,
     field: keyof RegistrationFormData[T],
-    value: any
+    value: string
   ) => {
     setData((prev) => ({
       ...prev,
-      [section]: { ...(prev[section] as any), [field]: value },
+      [section]: { ...prev[section], [field]: value } as RegistrationFormData[T],
     }));
   };
 
@@ -355,7 +360,7 @@ export const RegistrationForm: React.FC = () => {
         <div className="space-y-6">
           <h2 className="font-display text-2xl text-navy-950">Academic Information</h2>
           <p className="text-sm text-charcoal-500 -mt-4">
-            If this is your child's first school (e.g. Creche or Nursery), you can leave this section blank.
+            If this is your child&apos;s first school (e.g. Creche or Nursery), you can leave this section blank.
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             <TextField
@@ -453,7 +458,7 @@ export const RegistrationForm: React.FC = () => {
           <p className="text-xs text-charcoal-400 border-l-2 border-gold-500 pl-4 py-1">
             Note: this form does not yet connect to a document storage backend. Your selected
             files are listed here for your own record, but are not transmitted anywhere on
-            submission. The school's admissions office will advise how to send physical or
+            submission. The school&apos;s admissions office will advise how to send physical or
             digital copies of these documents separately.
           </p>
         </div>
@@ -464,7 +469,7 @@ export const RegistrationForm: React.FC = () => {
         <div className="space-y-6">
           <h2 className="font-display text-2xl text-navy-950">Additional Information</h2>
           <p className="text-sm text-charcoal-500 -mt-4">
-            All fields in this section are optional — only share what you're comfortable with.
+            All fields in this section are optional — only share what you&apos;re comfortable with.
           </p>
           <TextAreaField
             id="medicalInfo"

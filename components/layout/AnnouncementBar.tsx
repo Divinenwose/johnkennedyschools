@@ -11,6 +11,12 @@ export const AnnouncementBar: React.FC = () => {
   useEffect(() => {
     const dismissed = localStorage.getItem(admissionsConfig.announcement.localStorageKey);
     if (!dismissed) {
+      // Deliberately synchronous: this reads a client-only source of truth
+      // (localStorage) to decide initial visibility. It can't be a lazy
+      // useState initializer instead, because that runs during SSR too
+      // (where localStorage doesn't exist) and would cause a hydration
+      // mismatch between server and client output.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(true);
     }
   }, []);
