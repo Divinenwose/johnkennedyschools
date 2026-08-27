@@ -1,7 +1,7 @@
 import jsPDF from "jspdf";
 import { schoolConfig } from "@/config/school-config";
 import { feesConfig } from "@/config/fees-config";
-import type { ApplicationRecord } from "@/lib/application-storage";
+import type { PublicApplicationSummary } from "@/lib/supabase/types";
 
 async function loadLogoBase64(): Promise<string | null> {
   try {
@@ -22,7 +22,7 @@ function formatCurrency(amount: number, currency: string) {
   return new Intl.NumberFormat("en-NG", { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
 }
 
-export async function generateAdmissionBill(record: ApplicationRecord) {
+export async function generateAdmissionBill(application: PublicApplicationSummary) {
   const doc = new jsPDF({ unit: "pt", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 48;
@@ -60,15 +60,20 @@ export async function generateAdmissionBill(record: ApplicationRecord) {
 
   // Applicant details block
   const rows: [string, string][] = [
-    ["Application Number", record.applicationNumber],
-    ["Date", new Date(record.submittedAt).toLocaleDateString("en-NG", { year: "numeric", month: "long", day: "numeric" })],
+    ["Application Number", application.application_number],
     [
-      "Applicant Name",
-      [record.student.firstName, record.student.middleName, record.student.lastName].filter(Boolean).join(" "),
+      "Date",
+      new Date(application.registration_date).toLocaleDateString("en-NG", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     ],
-    ["Class Applied For", record.student.classApplyingFor],
-    ["Parent / Guardian", record.guardian.fullName],
-    ["Status", record.status],
+    ["Applicant Name", application.applicant_name],
+    ["Class Applied For", application.class_applied_for],
+    ...(application.academic_session ? ([["Academic Session", application.academic_session]] as [string, string][]) : []),
+    ["Application Status", application.status],
+    ["Payment Status", application.payment_status],
   ];
 
   doc.setFontSize(11);
@@ -161,5 +166,5 @@ export async function generateAdmissionBill(record: ApplicationRecord) {
   );
   doc.text(schoolConfig.campuses.nursery.address, margin, footerY + 14);
 
-  doc.save(`Admission-Bill-${record.applicationNumber}.pdf`);
+  doc.save(`Admission-Bill-${application.application_number}.pdf`);
 }

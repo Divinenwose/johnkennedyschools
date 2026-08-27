@@ -248,3 +248,25 @@ html.intro-seen #site-intro-overlay {
   transform: rotate(45deg);
   flex-shrink: 0;
 }
+
+/* ==========================================================================
+   PRINT — used by "Print Application" on the admission success and
+   status-lookup screens. Hides site chrome and interactive controls
+   (`print:hidden` utility classes handle per-component buttons), leaving a
+   clean, professionally formatted application summary.
+   ========================================================================== */
+@media print {
+  #site-header,
+  footer,
+  #site-intro-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  [data-print-application] {
+    max-width: 100% !important;
+  }
+}

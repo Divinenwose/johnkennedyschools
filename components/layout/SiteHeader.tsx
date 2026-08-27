@@ -7,7 +7,7 @@ import { Navbar } from '@/components/layout/Navbar';
 // top:0 independently, causing the navbar to overlap the announcement bar).
 export const SiteHeader: React.FC = () => {
   return (
-    <div className="fixed top-0 inset-x-0 z-50">
+    <div id="site-header" className="fixed top-0 inset-x-0 z-50">
       <AnnouncementBar />
       <Navbar />
     </div>

@@ -42,7 +42,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   overlay = 'standard',
 }) => {
   return (
-    <section className="relative overflow-hidden bg-navy-950 pt-40 pb-16 md:pt-44 md:pb-20">
+    <section className="relative overflow-hidden bg-navy-950 pt-40 pb-16 md:pt-44 md:pb-20 print:hidden">
       {image && (
         <div className="absolute inset-0">
           <Image

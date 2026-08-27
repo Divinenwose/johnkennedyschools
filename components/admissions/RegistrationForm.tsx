@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Upload, X, FileText } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Upload, X, FileText, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Stepper } from '@/components/admissions/Stepper';
 import { SuccessView } from '@/components/admissions/SuccessView';
@@ -9,7 +9,9 @@ import { TextField, SelectField, TextAreaField } from '@/components/admissions/F
 import { RegistrationFormData, emptyFormData, EMAIL_REGEX, isValidPhone } from '@/components/admissions/types';
 import { allClasses } from '@/config/classes-config';
 import { NIGERIAN_STATES } from '@/components/admissions/nigerian-states';
-import { saveApplication, ApplicationRecord } from '@/lib/application-storage';
+import { submitApplication, lookupApplication } from '@/lib/actions/admissions';
+import type { PublicApplicationSummary } from '@/lib/supabase/types';
+import { saveRecoveryReference, getRecoveryReference, clearRecoveryReference } from '@/lib/recovery-storage';
 
 type Errors = Record<string, string>;
 
@@ -21,8 +23,42 @@ export const RegistrationForm: React.FC = () => {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<RegistrationFormData>(emptyFormData);
   const [errors, setErrors] = useState<Errors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submittedRecord, setSubmittedRecord] = useState<ApplicationRecord | null>(null);
+  const [submittedApplication, setSubmittedApplication] = useState<PublicApplicationSummary | null>(null);
+
+  // One id per form session, stable across step navigation — sent with the
+  // submission so a retried/duplicated request can be recognized server-
+  // side and de-duplicated (see client_submission_id in the migration).
+  const [clientSubmissionId] = useState(() => crypto.randomUUID());
+
+  // Recovers the success screen after a page refresh: Supabase is the
+  // source of truth, this just remembers *which* application to re-fetch.
+  const [isCheckingRecovery, setIsCheckingRecovery] = useState(true);
+
+  useEffect(() => {
+    const ref = getRecoveryReference();
+    if (!ref) {
+      // Deliberately synchronous: this reads a client-only source of truth
+      // (localStorage) to decide whether a recovery lookup is even needed.
+      // Can't be a lazy useState initializer instead, since that runs
+      // during SSR too (no localStorage there) and would cause a
+      // hydration mismatch between server and client output — same
+      // reasoning as AnnouncementBar's equivalent check.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsCheckingRecovery(false);
+      return;
+    }
+    lookupApplication({ applicationNumber: ref.applicationNumber, email: ref.email }).then((result) => {
+      if (result.success) {
+        setSubmittedApplication(result.application);
+      } else {
+        // Stale/invalid reference (e.g. from a previous, unrelated visit) — clear it and show the form.
+        clearRecoveryReference();
+      }
+      setIsCheckingRecovery(false);
+    });
+  }, []);
 
   // Only the string-only sections flow through this generic setter —
   // `documents` (File[]) and the root `declaration` (boolean) are set
@@ -124,18 +160,32 @@ export const RegistrationForm: React.FC = () => {
       return;
     }
 
+    setSubmitError(null);
     setIsSubmitting(true);
     try {
-      const record = saveApplication({
+      const result = await submitApplication({
+        clientSubmissionId,
         student: data.student,
         guardian: data.guardian,
         emergencyContact: data.emergencyContact,
         academic: data.academic,
-        documents: { fileNames: data.documents.files.map((f) => f.name) },
+        documentFileNames: data.documents.files.map((f) => f.name),
         additional: data.additional,
+        declaration: data.declaration,
       });
-      setSubmittedRecord(record);
+
+      if (!result.success) {
+        setSubmitError(result.error);
+        if (result.fieldErrors) setErrors(result.fieldErrors);
+        return;
+      }
+
+      setSubmittedApplication(result.application);
+      saveRecoveryReference({ applicationNumber: result.application.application_number, email: data.guardian.email.trim().toLowerCase() });
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      console.error('[RegistrationForm] submission failed:', err);
+      setSubmitError("We couldn't submit your application right now. Please check your internet connection and try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -154,8 +204,17 @@ export const RegistrationForm: React.FC = () => {
     }));
   };
 
-  if (submittedRecord) {
-    return <SuccessView record={submittedRecord} />;
+  if (isCheckingRecovery) {
+    return (
+      <div className="max-w-3xl mx-auto py-20 text-center">
+        <div className="w-8 h-8 border-2 border-navy-900 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-charcoal-500 text-sm">Checking for a recent application…</p>
+      </div>
+    );
+  }
+
+  if (submittedApplication) {
+    return <SuccessView application={submittedApplication} />;
   }
 
   return (
@@ -564,10 +623,21 @@ export const RegistrationForm: React.FC = () => {
         </div>
       )}
 
+      {/* Submission error — form data stays intact so the applicant can retry */}
+      {submitError && (
+        <div
+          role="alert"
+          className="mt-8 flex items-start gap-3 border border-red-300 bg-red-50 px-5 py-4 text-sm text-red-700"
+        >
+          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <span>{submitError}</span>
+        </div>
+      )}
+
       {/* Navigation */}
       <div className="mt-12 flex items-center justify-between gap-4">
         {step > 1 ? (
-          <Button onClick={goBack} variant="outline" size="md" className="whitespace-nowrap">
+          <Button onClick={goBack} variant="outline" size="md" className="whitespace-nowrap" disabled={isSubmitting}>
             ← Back
           </Button>
         ) : (
@@ -579,8 +649,21 @@ export const RegistrationForm: React.FC = () => {
             Continue →
           </Button>
         ) : (
-          <Button onClick={handleSubmit} variant="primary" size="md" className="whitespace-nowrap" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting…' : 'Submit Application'}
+          <Button
+            onClick={handleSubmit}
+            variant="primary"
+            size="md"
+            className="whitespace-nowrap"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                Submitting Application…
+              </>
+            ) : (
+              'Submit Application'
+            )}
           </Button>
         )}
       </div>
