@@ -39,15 +39,15 @@ export const SchoolHighlights: React.FC = () => {
               <div
                 key={index}
                 className={`
-              flex items-start gap-2 px-3 py-5 sm:gap-3 sm:px-5 sm:py-6
-              border-stone-300
-              border-b
-              ${index % 2 === 0 ? "border-r" : ""}
-              md:border-b-0
-              md:border-r
-              ${index === items.length - 1 ? "md:border-r-0" : ""}
-              ${index === items.length - 2 ? "md:border-r-0" : ""}
-            `}
+                  flex items-start gap-2 px-3 py-5 sm:gap-3 sm:px-5 sm:py-6
+                  border-stone-300
+                  border-b
+                  ${index % 2 === 0 ? "border-r" : ""}
+                  md:border-b-0
+                  md:border-r
+                  ${index === items.length - 1 ? "md:border-r-0" : ""}
+                  ${index === items.length - 2 ? "md:border-r-0" : ""}
+                `}
               >
                 <Icon
                   className={`mt-0.5 h-5 w-5 flex-shrink-0 ${item.accent ? "text-gold-600" : "text-navy-800"

@@ -260,28 +260,6 @@ export default function SchoolLifePage() {
         </Container>
       </section>
       </Reveal>
-
-      {/* CTA */}
-      <Reveal>
-      <section className="py-20 md:py-24 bg-navy-950">
-        <Container>
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="max-w-lg">
-              <h2 className="font-display text-3xl md:text-4xl text-ivory-50">
-                Join Our Vibrant Community
-              </h2>
-              <p className="mt-3 text-ivory-100/70 leading-relaxed">
-                Experience a school life that balances academics with rich extracurricular
-                activities for holistic development.
-              </p>
-            </div>
-            <Button href="/admissions" variant="secondary" size="lg">
-              Apply for Admission →
-            </Button>
-          </div>
-        </Container>
-      </section>
-      </Reveal>
     </main>
   );
 }
