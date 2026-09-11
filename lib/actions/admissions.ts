@@ -52,6 +52,7 @@ export interface SubmitApplicationInput {
     additionalInfo: string;
   };
   documentFileNames: string[];
+  documentPaths: string[];
   additional: {
     medicalInfo: string;
     allergies: string;
@@ -59,6 +60,63 @@ export interface SubmitApplicationInput {
     otherInfo: string;
   };
   declaration: boolean;
+}
+
+const DOCUMENT_BUCKET = 'admission-documents';
+const MAX_DOCUMENT_SIZE = 5 * 1024 * 1024;
+const ACCEPTED_DOCUMENT_TYPES = new Set(['application/pdf', 'image/jpeg', 'image/png']);
+
+export type UploadDocumentsResult =
+  | { success: true; files: Array<{ name: string; path: string }> }
+  | { success: false; error: string };
+
+export async function uploadApplicationDocuments(formData: FormData): Promise<UploadDocumentsResult> {
+  const clientSubmissionId = String(formData.get('clientSubmissionId') || '');
+  const files = formData.getAll('files').filter((value): value is File => value instanceof File);
+
+  if (!clientSubmissionId || files.length === 0) return { success: true, files: [] };
+  if (files.length > 10) return { success: false, error: 'You can upload a maximum of 10 documents.' };
+
+  for (const file of files) {
+    if (file.size > MAX_DOCUMENT_SIZE || !ACCEPTED_DOCUMENT_TYPES.has(file.type)) {
+      return { success: false, error: `The file "${file.name}" is too large or has an unsupported format.` };
+    }
+  }
+
+  let supabase;
+  try {
+    supabase = getSupabaseServerClient();
+  } catch (err) {
+    console.error('[uploadApplicationDocuments] Supabase not configured:', err);
+    return { success: false, error: 'Document uploads are not available right now. Please try again shortly.' };
+  }
+
+  const { data: bucket } = await supabase.storage.getBucket(DOCUMENT_BUCKET);
+  if (!bucket) {
+    const { error: bucketError } = await supabase.storage.createBucket(DOCUMENT_BUCKET, { public: false });
+    if (bucketError && !bucketError.message.toLowerCase().includes('already exists')) {
+      console.error('[uploadApplicationDocuments] bucket setup failed:', bucketError);
+      return { success: false, error: 'Document uploads are not available right now. Please try again shortly.' };
+    }
+  }
+
+  const uploaded: Array<{ name: string; path: string }> = [];
+  for (const file of files) {
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-');
+    const path = `${clientSubmissionId}/${crypto.randomUUID()}-${safeName}`;
+    const { error } = await supabase.storage.from(DOCUMENT_BUCKET).upload(path, Buffer.from(await file.arrayBuffer()), {
+      contentType: file.type,
+      upsert: false,
+    });
+
+    if (error) {
+      console.error('[uploadApplicationDocuments] upload failed:', error);
+      return { success: false, error: 'One or more documents could not be uploaded. Please try again.' };
+    }
+    uploaded.push({ name: file.name, path });
+  }
+
+  return { success: true, files: uploaded };
 }
 
 export type SubmitApplicationResult =
@@ -203,6 +261,7 @@ export async function submitApplication(input: SubmitApplicationInput): Promise<
       },
       documents: {
         fileNames: input.documentFileNames,
+        paths: input.documentPaths,
       },
       additional: {
         medicalInfo: input.additional.medicalInfo || undefined,

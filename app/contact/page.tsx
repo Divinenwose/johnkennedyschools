@@ -9,6 +9,7 @@ import { Reveal } from '@/components/motion/Reveal';
 import { MapPin, Phone } from 'lucide-react';
 import { schoolConfig } from '@/config/school-config';
 import { schoolImages } from '@/config/images-config';
+import { submitEnquiry } from '@/lib/actions/contact';
 
 const inputStyles =
   'w-full px-4 py-3 bg-ivory-50 border border-stone-300 text-sm text-charcoal-900 placeholder:text-charcoal-400 focus-visible:outline-2 focus-visible:outline-gold-500 focus-visible:outline-offset-1 outline-none transition-colors';
@@ -22,11 +23,20 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission will be handled by backend/email service
-    alert('Thank you for your enquiry. We will get back to you soon.');
+    setIsSubmitting(true);
+    setFormMessage(null);
+    const result = await submitEnquiry(formData);
+    if (!result.success) {
+      setFormMessage({ type: 'error', text: result.error });
+      setIsSubmitting(false);
+      return;
+    }
+    setFormMessage({ type: 'success', text: 'Thank you for your enquiry. We will get back to you soon.' });
     setFormData({
       fullName: '',
       email: '',
@@ -35,6 +45,7 @@ export default function ContactPage() {
       subject: '',
       message: '',
     });
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -259,13 +270,14 @@ export default function ContactPage() {
                 </div>
 
                 <Button type="submit" variant="primary" size="lg" className="w-full">
-                  Send Enquiry
+                  {isSubmitting ? 'Sending…' : 'Send Enquiry'}
                 </Button>
 
-                <p className="text-xs text-charcoal-400 text-center pt-1">
-                  This form is a demonstration. Connect it to an email service or backend API to
-                  enable delivery.
-                </p>
+                {formMessage && (
+                  <p role="status" className={`text-sm text-center pt-1 ${formMessage.type === 'error' ? 'text-red-600' : 'text-green-700'}`}>
+                    {formMessage.text}
+                  </p>
+                )}
               </form>
             </div>
           </div>

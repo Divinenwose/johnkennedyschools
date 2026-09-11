@@ -24,6 +24,7 @@ export type ApplicationSecondaryData = {
   };
   documents?: {
     fileNames?: string[];
+    paths?: string[];
   };
   additional?: {
     medicalInfo?: string;

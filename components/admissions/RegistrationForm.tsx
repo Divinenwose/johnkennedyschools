@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 import { Upload, X, FileText, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Stepper } from '@/components/admissions/Stepper';
@@ -9,7 +10,7 @@ import { TextField, SelectField, TextAreaField } from '@/components/admissions/F
 import { RegistrationFormData, emptyFormData, EMAIL_REGEX, isValidPhone } from '@/components/admissions/types';
 import { allClasses } from '@/config/classes-config';
 import { NIGERIAN_STATES } from '@/components/admissions/nigerian-states';
-import { submitApplication, lookupApplication } from '@/lib/actions/admissions';
+import { submitApplication, uploadApplicationDocuments, lookupApplication } from '@/lib/actions/admissions';
 import type { PublicApplicationSummary } from '@/lib/supabase/types';
 import { saveRecoveryReference, getRecoveryReference, clearRecoveryReference } from '@/lib/recovery-storage';
 
@@ -26,6 +27,18 @@ export const RegistrationForm: React.FC = () => {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedApplication, setSubmittedApplication] = useState<PublicApplicationSummary | null>(null);
+  const imagePreviews = useMemo(
+    () => data.documents.files.map((file) => (file.type.startsWith('image/') ? URL.createObjectURL(file) : null)),
+    [data.documents.files]
+  );
+
+  useEffect(() => {
+    return () => {
+      imagePreviews.forEach((preview) => {
+        if (preview) URL.revokeObjectURL(preview);
+      });
+    };
+  }, [imagePreviews]);
 
   // One id per form session, stable across step navigation — sent with the
   // submission so a retried/duplicated request can be recognized server-
@@ -163,6 +176,15 @@ export const RegistrationForm: React.FC = () => {
     setSubmitError(null);
     setIsSubmitting(true);
     try {
+      const uploadData = new FormData();
+      uploadData.append('clientSubmissionId', clientSubmissionId);
+      data.documents.files.forEach((file) => uploadData.append('files', file));
+      const uploadResult = await uploadApplicationDocuments(uploadData);
+      if (!uploadResult.success) {
+        setSubmitError(uploadResult.error);
+        return;
+      }
+
       const result = await submitApplication({
         clientSubmissionId,
         student: data.student,
@@ -170,6 +192,7 @@ export const RegistrationForm: React.FC = () => {
         emergencyContact: data.emergencyContact,
         academic: data.academic,
         documentFileNames: data.documents.files.map((f) => f.name),
+        documentPaths: uploadResult.files.map((file) => file.path),
         additional: data.additional,
         declaration: data.declaration,
       });
@@ -492,10 +515,21 @@ export const RegistrationForm: React.FC = () => {
               {data.documents.files.map((file, index) => (
                 <li
                   key={`${file.name}-${index}`}
-                  className="flex items-center justify-between gap-3 border border-stone-300 bg-ivory-50 px-4 py-3"
+                  className="flex flex-wrap items-center justify-between gap-3 border border-stone-300 bg-ivory-50 px-4 py-3"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <FileText className="w-4 h-4 text-navy-800 flex-shrink-0" />
+                    {imagePreviews[index] ? (
+                      <Image
+                        src={imagePreviews[index] as string}
+                        alt={`Preview of ${file.name}`}
+                        width={56}
+                        height={56}
+                        unoptimized
+                        className="h-14 w-14 flex-shrink-0 object-cover border border-stone-300"
+                      />
+                    ) : (
+                      <FileText className="w-4 h-4 text-navy-800 flex-shrink-0" />
+                    )}
                     <span className="text-sm text-charcoal-800 truncate">{file.name}</span>
                     <span className="text-xs text-charcoal-400 flex-shrink-0">
                       {(file.size / 1024 / 1024).toFixed(1)}MB
@@ -515,10 +549,7 @@ export const RegistrationForm: React.FC = () => {
           )}
 
           <p className="text-xs text-charcoal-400 border-l-2 border-gold-500 pl-4 py-1">
-            Note: this form does not yet connect to a document storage backend. Your selected
-            files are listed here for your own record, but are not transmitted anywhere on
-            submission. The school&apos;s admissions office will advise how to send physical or
-            digital copies of these documents separately.
+            Selected documents are securely uploaded with your application.
           </p>
         </div>
       )}
@@ -635,7 +666,7 @@ export const RegistrationForm: React.FC = () => {
       )}
 
       {/* Navigation */}
-      <div className="mt-12 flex items-center justify-between gap-4">
+      <div className="mt-12 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4">
         {step > 1 ? (
           <Button onClick={goBack} variant="outline" size="md" className="whitespace-nowrap" disabled={isSubmitting}>
             ← Back

@@ -142,7 +142,7 @@ export const ApplicationStatusLookup: React.FC = () => {
                 }),
               },
             ].map((row) => (
-              <div key={row.label} className="grid grid-cols-2 px-6 py-4">
+              <div key={row.label} className="grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-2 sm:gap-0 sm:px-6">
                 <span className="text-xs font-semibold uppercase tracking-wider text-charcoal-500">{row.label}</span>
                 <span className="text-sm font-medium text-navy-950">{row.value}</span>
               </div>
