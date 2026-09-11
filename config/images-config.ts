@@ -3,15 +3,15 @@ export const schoolImages = {
   // These can be easily replaced with actual school photographs later
   hero: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80",
   students: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
-  classroom: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+  classroom: "/images/gallery/junior.jpeg",
   nursery:  "/images/admissions/nursery.jpeg",
-  college: "/images/admissions/college.jpeg",
-  schoolLife: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
-  sports: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80",
-  activities: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=800&q=80",
+  college: "/images/gallery/events.jpeg",
+  schoolLife: "/images/school-life/life.jpeg",
+  sports: "/images/events/sports.jpeg",
+  activities: "/images/events/activities.jpeg",
   teachers: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
   events: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80",
-  about: "/images/about/img11.png",
+  about: "/images/about/img11.jpeg",
   admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
   results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
 
@@ -19,7 +19,7 @@ export const schoolImages = {
   // full-bleed page header banners rather than small content slots.
   pageHeroes: {
     about: "/images/about/ab1.jpeg",
-    academics: "/images/hero/hro1.png",
+    academics: "/images/academics/acad.jpeg",
     admissions: "/images/about/enrol.jpeg",
     schoolLife:"/images/life.jpeg",
     news: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1920&q=80",

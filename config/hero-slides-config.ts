@@ -34,7 +34,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "Why Choose Us", href: "/about" },
   },
   {
-    image: "/images/hero/hro2.png",
+    image: "/images/about/img11.png",
     alt: "Students taking part in school activities",
     eyebrow: "Beyond the Classroom",
     headline: ["A Vibrant School Life", "That Builds Character"],
