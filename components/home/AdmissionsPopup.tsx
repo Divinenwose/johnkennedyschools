@@ -14,13 +14,26 @@ export const AdmissionsPopup: React.FC = () => {
   useEffect(() => {
     const hasSeenPopup = localStorage.getItem(admissionsConfig.popup.localStorageKey);
 
-    if (!hasSeenPopup && admissionsConfig.isOpen) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, admissionsConfig.popup.delay);
+    if (hasSeenPopup || !admissionsConfig.isOpen) return;
 
-      return () => clearTimeout(timer);
+    let popupTimer: ReturnType<typeof setTimeout> | undefined;
+    const showPopupAfterLoader = () => {
+      setIsOpen(true);
+    };
+
+    if (sessionStorage.getItem('jkis-intro-v2-complete')) {
+      showPopupAfterLoader();
+      return () => {
+        if (popupTimer) clearTimeout(popupTimer);
+      };
     }
+
+    window.addEventListener('jkis-intro-complete', showPopupAfterLoader);
+
+    return () => {
+      window.removeEventListener('jkis-intro-complete', showPopupAfterLoader);
+      if (popupTimer) clearTimeout(popupTimer);
+    };
   }, []);
 
   const handleClose = () => {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Footer } from "@/components/layout/Footer";
+import { IntroLoader } from "@/components/layout/IntroLoader";
 
 export const metadata: Metadata = {
   title: "John Kennedy International Schools | Building Excellence. Shaping the Future.",
@@ -29,15 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Runs before first paint (see strategy on the Script tag below via
-            a plain blocking <script>): if this tab already saw the intro
-            this session, mark <html> so the CSS rule hides the overlay
-            before it ever paints — zero flash on repeat navigations. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem('jkis-intro-seen')){document.documentElement.classList.add('intro-seen')}}catch(e){}`,
-          }}
-        />
       </head>
       <body className="min-h-screen bg-ivory-100 text-charcoal-900">
         {/* Server-rendered overlay markup — present in the very first HTML
@@ -58,13 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span className="intro-progress-track">
               <span className="intro-progress-fill" />
             </span>
+            <span id="intro-progress-value" className="intro-progress-value">Loading 0%</span>
           </div>
         </div>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(!sessionStorage.getItem('jkis-intro-seen')){sessionStorage.setItem('jkis-intro-seen','1');document.documentElement.style.overflow='hidden';setTimeout(function(){var el=document.getElementById('site-intro-overlay');if(el){el.classList.add('intro-fade-out');document.documentElement.style.overflow='';setTimeout(function(){el.style.display='none'},650)}},7000)}}catch(e){}})();`,
-          }}
-        />
+        <IntroLoader />
 
         <SiteHeader />
         {children}

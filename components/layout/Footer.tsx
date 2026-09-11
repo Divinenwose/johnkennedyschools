@@ -13,21 +13,6 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-navy-950 text-ivory-100">
-      {/* Closing CTA strip */}
-      <div className="border-b border-ivory-50/10">
-        <Container className="py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-400 mb-2">Admissions Open</p>
-            <h3 className="font-display text-2xl md:text-3xl text-ivory-50">
-              Begin your child&apos;s journey with us.
-            </h3>
-          </div>
-          <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
-            Start Your Application →
-          </Button>
-        </Container>
-      </div>
-
       <Container className="py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* School Info */}
@@ -141,7 +126,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-ivory-50/10">
+        <div className="mt-14  pt-8 border-t border-ivory-50/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-ivory-100/40 text-xs">
               © {currentYear} {schoolConfig.name}. All rights reserved.
