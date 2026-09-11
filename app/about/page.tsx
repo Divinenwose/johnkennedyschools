@@ -16,7 +16,7 @@ export const metadata = {
 const boardOfDirectors = [
   { name: 'Mrs Patricia Nnaemeka', title: 'Proprietress', image: '/images/board/pat.jpeg' },
   { name: 'Mr. Obiajulu Nnaemeka', title: 'Executive Director', image: '/images/board/obi.jpeg' },
-  { name: 'Mrs. Mercy Nnaemeka', title: 'Executive Director', image: '/images/board/mercy.jpeg' },
+  { name: 'Mrs. Mercy Katchy', title: 'Executive Director', image: '/images/board/mercy.jpeg' },
   { name: 'Mr. Chukwuka Nnaemeka', title: 'Executive Director', image: '/images/board/chu.jpeg' },
   { name: 'Mr Chibuike Nnaemeka', title: 'Executive Director', image: '/images/board/chubby.jpeg' },
   { name: 'Mr. Olu Olagbuji', title: 'Coordinator', image: '/images/board/olu.jpeg' },
@@ -220,7 +220,7 @@ export default function AboutPage() {
                 {
                   title: 'Modern Facilities',
                   description:
-                    'Our campuses are equipped with modern learning resources, well-maintained classrooms, and facilities that support comprehensive education including sports, arts, and technology.',
+                    'Our sections are equipped with modern learning resources, well-maintained classrooms, and facilities that support comprehensive education including sports, arts, and technology.',
                 },
                 {
                   title: 'Experienced Educators',
@@ -242,11 +242,24 @@ export default function AboutPage() {
       <Reveal>
         <section className="py-20 md:py-28 bg-ivory-100">
           <Container>
-            <SectionHeading subtitle="Governance" align="center" className="items-center">
+            <SectionHeading
+              subtitle="Governance"
+              align="center"
+              className="items-center"
+            >
               Board of Directors
             </SectionHeading>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-4">
+            <div className="max-w-3xl mx-auto mb-12">
+              <p className="text-center text-gray-600 leading-relaxed text-base md:text-lg">
+                Behind every great school is a vision that reaches beyond the classroom.
+                Our Board of Directors provides the leadership, wisdom, and direction that
+                continue to shape our school into a place where young minds are nurtured,
+                talents are discovered, and futures are built.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-12">
               {boardOfDirectors.map((member, index) => (
                 <BoardMemberCard key={index} {...member} />
               ))}
@@ -257,16 +270,16 @@ export default function AboutPage() {
 
       {/* CTA */}
       <Reveal>
-        <section className="py-20 md:py-24 bg-navy-950">
+        <section className="py-20 md:py-24 bg-ivory-200 text-charcoal-900">
           <Container>
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div className="max-w-lg">
-                <h2 className="font-display text-3xl md:text-4xl text-ivory-50">Join Our Community</h2>
-                <p className="mt-3 text-ivory-100/70 leading-relaxed">
+                <h2 className="font-display text-3xl md:text-4xl text-navy-950">Join Our Community</h2>
+                <p className="mt-3 text-charcoal-700 leading-relaxed">
                   Be part of a school that values excellence, character, and the future of your child.
                 </p>
               </div>
-              <Link href="/admissions">
+              <Link href="/admissions" className="w-full md:w-auto">
                 <Button variant="secondary" size="lg">
                   Learn About Admissions →
                 </Button>

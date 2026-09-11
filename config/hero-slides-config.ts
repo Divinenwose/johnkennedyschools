@@ -41,7 +41,7 @@ export const heroSlides: HeroSlide[] = [
     subtext:
       "Sports, arts, clubs, and cultural activities that nurture confidence, teamwork, and creativity alongside academic growth.",
     primaryCta: { label: "Explore School Life", href: "/school-life" },
-    secondaryCta: { label: "See Our Campuses", href: "/about" },
+    secondaryCta: { label: "See Our Sections", href: "/about" },
   },
   {
     image: "/images/hero/hro4.png",

@@ -22,8 +22,8 @@ export default function AdmissionsPage() {
     },
     {
       icon: MapPin,
-      title: 'Select Campus',
-      description: "Choose between our Nursery or College campus based on your child's age and educational needs.",
+      title: 'Select Section',
+      description: "Choose between our Nursery & Primary or College section based on your child's age and educational needs.",
     },
     {
       icon: FileText,
@@ -49,22 +49,22 @@ export default function AdmissionsPage() {
         'To apply, contact us through the enquiry form or call our office. We will guide you through the registration process and provide information about available spaces.',
     },
     {
-      question: 'Which campuses are available?',
+      question: 'Which sections are available?',
       answer:
-        'We have two campuses: Nursery Campus for early years education and College Campus for secondary education. Both are located in Aguda, Surulere, Lagos.',
+        'We have two sections: Nursery & Primary section for early years and primary education, and College section for secondary education. Both are located in Aguda, Surulere, Lagos.',
     },
     {
       question: 'How do I contact the school?',
-      answer: `You can reach us by phone at ${schoolConfig.contact.phones[0]} or ${schoolConfig.contact.phones[1]}, or visit our campuses in person during school hours.`,
+      answer: `You can reach us by phone at ${schoolConfig.contact.phones[0]} or ${schoolConfig.contact.phones[1]}, or visit us in person during school hours.`,
     },
     {
       question: 'Where is the school located?',
-      answer: `Our Nursery Campus is at ${schoolConfig.campuses.nursery.address}. Our College Campus is at ${schoolConfig.campuses.college.address}.`,
+      answer: `Our Nursery & Primary section is at ${schoolConfig.campuses.nursery.address}. Our College section is at ${schoolConfig.campuses.college.address}.`,
     },
     {
       question: 'How can I register?',
       answer:
-        'Registration can be completed online through our registration portal or in person at either campus.',
+        'Registration can be completed online through our registration portal or in person at either section.',
     },
   ];
 
@@ -109,7 +109,7 @@ export default function AdmissionsPage() {
               <div className="relative aspect-[4/5]">
                 <Image
                   src={schoolImages.nursery}
-                  alt="Nursery campus learning environment"
+                  alt="Nursery and Primary section learning environment"
                   fill
                   sizes="(min-width: 1024px) 40vw, 90vw"
                   className="object-cover"
@@ -187,7 +187,7 @@ export default function AdmissionsPage() {
               <div className="relative aspect-[4/5]">
                 <Image
                   src={schoolImages.college}
-                  alt="College campus learning environment"
+                  alt="College section learning environment"
                   fill
                   sizes="(min-width: 1024px) 40vw, 90vw"
                   className="object-cover"
@@ -249,19 +249,19 @@ export default function AdmissionsPage() {
 
       {/* CTA */}
       <Reveal>
-      <section className="py-20 md:py-24 bg-navy-950">
+      <section className="py-20 md:py-24 bg-ivory-200 text-charcoal-900">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="max-w-lg">
-              <h2 className="font-display text-3xl md:text-4xl text-ivory-50">
+              <h2 className="font-display text-3xl md:text-4xl text-navy-950">
                 Ready to Begin Your Journey?
               </h2>
-              <p className="mt-3 text-ivory-100/70 leading-relaxed">
+              <p className="mt-3 text-charcoal-700 leading-relaxed">
                 Applications for the next academic session are now open. Take the first step
                 towards your child&apos;s future today.
               </p>
             </div>
-            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg">
+            <Button href={admissionsConfig.registrationUrl} variant="secondary" size="lg" className="w-full md:w-auto">
               Register Now →
             </Button>
           </div>

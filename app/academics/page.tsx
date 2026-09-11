@@ -235,19 +235,19 @@ export default function AcademicsPage() {
 
       {/* CTA */}
       <Reveal>
-      <section className="py-20 md:py-24 bg-navy-950">
+      <section className="py-20 md:py-24 bg-ivory-200 text-charcoal-900">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="max-w-lg">
-              <h2 className="font-display text-3xl md:text-4xl text-ivory-50">
+              <h2 className="font-display text-3xl md:text-4xl text-navy-950">
                 Prepare Your Child for Success
               </h2>
-              <p className="mt-3 text-ivory-100/70 leading-relaxed">
+              <p className="mt-3 text-charcoal-700 leading-relaxed">
                 Our academic programmes are designed to equip students with the knowledge,
                 skills, and character needed for future success.
               </p>
             </div>
-            <Link href="/admissions">
+            <Link href="/admissions" className="w-full md:w-auto">
               <Button variant="secondary" size="lg">
                 Apply for Admission →
               </Button>

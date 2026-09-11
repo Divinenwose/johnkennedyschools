@@ -60,7 +60,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <div>
-              <SectionHeading subtitle="Find Us">Our Campuses</SectionHeading>
+              <SectionHeading subtitle="Find Us">Our Sections</SectionHeading>
 
               <div className="space-y-8">
                 <div className="border-l-2 border-gold-500 pl-6">
@@ -125,13 +125,36 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="mt-10 border border-stone-300 bg-ivory-50 p-10 text-center">
-                <MapPin className="w-8 h-8 text-gold-600 mx-auto mb-3" strokeWidth={1.5} />
-                <h3 className="font-display text-lg text-navy-950 mb-2">Location Map</h3>
-                <p className="text-charcoal-600 text-sm max-w-xs mx-auto">
-                  An interactive map with both campus locations will be added here once map
-                  coordinates are configured.
-                </p>
+              <div className="mt-10">
+                <h3 className="font-display text-lg text-navy-950 mb-4">Location Map</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="border border-stone-300 bg-ivory-50">
+                    <div className="px-4 py-3">
+                      <p className="text-sm font-semibold text-navy-950">Nursery &amp; Primary section</p>
+                    </div>
+                    <iframe
+                      title="Map showing John Kennedy International Nursery School"
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(schoolConfig.campuses.nursery.address)}&output=embed`}
+                      className="w-full aspect-[4/3] border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="border border-stone-300 bg-ivory-50">
+                    <div className="px-4 py-3">
+                      <p className="text-sm font-semibold text-navy-950">College section</p>
+                    </div>
+                    <iframe
+                      title="Map showing John Kennedy International College"
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(schoolConfig.campuses.college.address)}&output=embed`}
+                      className="w-full aspect-[4/3] border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -189,7 +212,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="campus" className="block text-xs font-semibold uppercase tracking-wider text-charcoal-600 mb-2">
-                    Campus *
+                    Section *
                   </label>
                   <select
                     id="campus"
@@ -199,9 +222,9 @@ export default function ContactPage() {
                     required
                     className={inputStyles}
                   >
-                    <option value="">Select a campus</option>
-                    <option value="nursery">Nursery Campus</option>
-                    <option value="college">College Campus</option>
+                    <option value="">Select a section</option>
+                    <option value="nursery">Nursery &amp; Primary section</option>
+                    <option value="college">College section</option>
                   </select>
                 </div>
 

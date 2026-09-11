@@ -21,9 +21,9 @@ export const schoolImages = {
     about: "/images/about/ab1.jpeg",
     academics: "/images/hero/hro1.png",
     admissions: "/images/about/enrol.jpeg",
-    schoolLife: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=1920&q=80",
+    schoolLife:"/images/life.jpeg",
     news: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1920&q=80",
-    contact: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80",
+    contact: "/images/contact.jpeg",
   },
   
   // Portrait placeholders for testimonials — replace with real parent

@@ -40,7 +40,7 @@ export const Campuses: React.FC = () => {
     <section className="py-20 md:py-28 bg-ivory-50 border-y border-stone-300">
       <Container>
         <SectionHeading subtitle="Our Locations">
-          Two Campuses, One Standard
+          Two Sections, One Standard
         </SectionHeading>
 
         <div className="grid md:grid-cols-2 gap-10">

@@ -7,6 +7,7 @@ import { admissionsConfig } from '@/config/admissions-config';
 import { MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
+import { SocialLinks } from '@/components/layout/SocialLinks';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -37,6 +38,7 @@ export const Footer: React.FC = () => {
             <p className="text-ivory-100/60 text-sm leading-relaxed">
               Building Excellence. Shaping the Future. Quality education in Surulere, Lagos.
             </p>
+            <SocialLinks links={schoolConfig.socialLinks} />
           </div>
 
           {/* School Links */}
@@ -132,40 +134,21 @@ export const Footer: React.FC = () => {
               © {currentYear} {schoolConfig.name}. All rights reserved.
             </p>
 
-            <div className="flex items-center gap-6">
-              {schoolConfig.socialLinks.facebook && (
-                <a
-                  href={schoolConfig.socialLinks.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ivory-100/50 hover:text-gold-400 transition-colors text-xs font-medium uppercase tracking-wider"
-                  aria-label="Facebook"
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:justify-end">
+              <div className="flex items-center gap-5">
+                <Link
+                  href="/privacy-policy"
+                  className="text-ivory-100/50 hover:text-gold-400 transition-colors text-xs font-medium"
                 >
-                  Facebook
-                </a>
-              )}
-              {schoolConfig.socialLinks.instagram && (
-                <a
-                  href={schoolConfig.socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ivory-100/50 hover:text-gold-400 transition-colors text-xs font-medium uppercase tracking-wider"
-                  aria-label="Instagram"
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-ivory-100/50 hover:text-gold-400 transition-colors text-xs font-medium"
                 >
-                  Instagram
-                </a>
-              )}
-              {schoolConfig.socialLinks.youtube && (
-                <a
-                  href={schoolConfig.socialLinks.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ivory-100/50 hover:text-gold-400 transition-colors text-xs font-medium uppercase tracking-wider"
-                  aria-label="YouTube"
-                >
-                  YouTube
-                </a>
-              )}
+                  Terms of Use
+                </Link>
+              </div>
             </div>
           </div>
         </div>

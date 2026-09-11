@@ -7,12 +7,12 @@ export const SchoolHighlights: React.FC = () => {
   const items = [
     {
       icon: MapPin,
-      label: 'Nursery Campus',
+      label: 'Nursery & Primary section',
       value: 'Aguda, Surulere',
     },
     {
       icon: MapPin,
-      label: 'College Campus',
+      label: 'College section',
       value: 'Aguda, Surulere',
     },
     {

@@ -178,12 +178,12 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Mobile CTAs */}
-          <div className="px-6 py-6 border-t border-ivory-50/10 space-y-3">
+          <div className="flex w-full flex-col items-stretch gap-3 px-6 py-6 border-t border-ivory-50/10">
             <Button
               href={admissionsConfig.registrationUrl}
               variant="secondary"
               size="md"
-              className="w-full"
+              className="flex w-full"
               onClick={closeMobileMenu}
             >
               Apply Now
@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
               variant="outlineLight"
               size="md"
               external
-              className="w-full"
+              className="flex w-full"
               onClick={closeMobileMenu}
             >
               Result Portal
