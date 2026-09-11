@@ -22,7 +22,9 @@ const boardOfDirectors = [
   { name: 'Mr. Olu Olagbuji', title: 'Coordinator', image: '/images/board/olu.jpeg' },
 ];
 
-function getInitials(name) {
+type BoardMember = (typeof boardOfDirectors)[number];
+
+function getInitials(name: string) {
   return name
     .split(' ')
     .filter(Boolean)
@@ -32,7 +34,7 @@ function getInitials(name) {
     .toUpperCase();
 }
 
-function BoardMemberCard({ name, title, image }) {
+function BoardMemberCard({ name, title, image }: BoardMember) {
   return (
     <div className="group">
       <div className="relative aspect-[4/5] overflow-hidden bg-navy-950">
