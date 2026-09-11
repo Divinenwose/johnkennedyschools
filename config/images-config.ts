@@ -2,7 +2,7 @@ export const schoolImages = {
   // Using Unsplash source URLs for real temporary photographs
   // These can be easily replaced with actual school photographs later
   hero: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80",
-  students: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+  students: "/images/gallery/stud.jpeg",
   classroom: "/images/gallery/junior.jpeg",
   nursery:  "/images/admissions/nursery.jpeg",
   college: "/images/gallery/events.jpeg",
@@ -38,7 +38,7 @@ export const schoolImages = {
   // Gallery images
   gallery: {
     learning: "/images/hero/hro1.png",
-    students: "/images/gallery/comm1.jpeg",
+    students: "/images/gallery/studs.jpeg",
     classroom: "/images/gallery/comm.jpeg",
     sports: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80",
     activities: "/images/gallery/activity.jpeg",
