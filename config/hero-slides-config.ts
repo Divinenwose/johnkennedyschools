@@ -14,7 +14,7 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    image: "/images/hero/hero.png",
+    image: "/images/hero/hero11.png",
     alt: "Students at John Kennedy International Schools",
     eyebrow: schoolConfig.name,
     headline: schoolConfig.tagline.split(". ").map((line, i, arr) => (i < arr.length - 1 ? `${line}.` : line)),
