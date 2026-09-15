@@ -183,25 +183,31 @@ html.intro-seen #site-intro-overlay {
   animation: intro-mark-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-#site-intro-overlay .intro-progress-track {
+/* Wraps the walker + the progress line together so the character can be
+   positioned relative to the line itself and walk along it. */
+#site-intro-overlay .intro-progress-row {
+  position: relative;
   margin-top: 1.75rem;
   width: min(240px, 70vw);
+}
+
+#site-intro-overlay .intro-progress-track {
+  width: 100%;
   height: 5px;
   background: color-mix(in srgb, var(--ivory-50) 20%, transparent);
   border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent);
   overflow: hidden;
 }
 
-/* The walker traverses the full width of the screen, left to right,
-   independent of (and positioned beneath) the centered logo/progress
-   block above — not confined to the small progress-track width. */
+/* Stands on the line, starting at its left edge, and walks along it to
+   the right in step with the loading percentage. */
 #site-intro-overlay .intro-walker {
   position: absolute;
-  bottom: 20%;
+  bottom: 5px;
   left: 0;
-  width: 52px;
-  height: 68px;
-  transform: translateX(-50%);
+  width: 30px;
+  height: 35px;
+  transform: translateX(-16px);
   transition: left 50ms linear;
 }
 
@@ -276,24 +282,32 @@ html.intro-seen #site-intro-overlay {
 #site-intro-overlay .intro-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(
-    90deg,
-    var(--gold-500) 0%,
-    var(--gold-300) 50%,
-    var(--gold-500) 100%
-  );
-  background-size: 200% 100%;
+  /* Two layers: a directional "progression" gradient that stays fixed
+     (richer/brighter toward the leading edge, so the color itself shows
+     how far along the bar is) plus a subtle highlight streak that sweeps
+     across on top for a bit of shine. */
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--ivory-50) 55%, transparent) 50%,
+      transparent 100%
+    ),
+    linear-gradient(90deg, var(--gold-600) 0%, var(--gold-400) 55%, var(--gold-300) 100%);
+  background-size: 60% 100%, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: -60% 0, 0 0;
   box-shadow: 0 0 12px color-mix(in srgb, var(--gold-400) 70%, transparent);
   transition: width 50ms linear;
-  animation: intro-progress-shimmer 1.4s linear infinite;
+  animation: intro-progress-shimmer 1.6s ease-in-out infinite;
 }
 
 @keyframes intro-progress-shimmer {
   from {
-    background-position: 200% 0;
+    background-position: -60% 0, 0 0;
   }
   to {
-    background-position: -200% 0;
+    background-position: 160% 0, 0 0;
   }
 }
 
