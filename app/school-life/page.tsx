@@ -2,7 +2,6 @@ import { Reveal } from '@/components/motion/Reveal';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
-import { Button } from '@/components/ui/Button';
 import { ImageCard } from '@/components/ui/ImageCard';
 import { schoolImages } from '@/config/images-config';
 import { Heart, Trophy, Music, Palette, Users, BookOpen } from 'lucide-react';

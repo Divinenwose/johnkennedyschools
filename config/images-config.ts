@@ -37,7 +37,7 @@ export const schoolImages = {
 
   // Gallery images
   gallery: {
-    learning: "/images/hero/hro1.png",
+    learning: "/images/hero/hro1.jpeg",
     students: "/images/gallery/studs.jpeg",
     classroom: "/images/gallery/comm.jpeg",
     sports: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80",

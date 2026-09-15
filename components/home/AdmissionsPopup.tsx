@@ -12,37 +12,27 @@ export const AdmissionsPopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasSeenPopup = localStorage.getItem(admissionsConfig.popup.localStorageKey);
+    if (!admissionsConfig.isOpen) return;
 
-    if (hasSeenPopup || !admissionsConfig.isOpen) return;
-
-    let popupTimer: ReturnType<typeof setTimeout> | undefined;
-    const showPopupAfterLoader = () => {
-      setIsOpen(true);
-    };
+    // Shown every time the homepage finishes loading (not gated by a
+    // "seen once, never again" flag) — it opens right as the intro loader
+    // completes, and stays open until the visitor closes it themselves.
+    const showPopup = () => setIsOpen(true);
 
     if (sessionStorage.getItem('jkis-intro-v2-complete')) {
-      showPopupAfterLoader();
-      return () => {
-        if (popupTimer) clearTimeout(popupTimer);
-      };
+      showPopup();
+      return;
     }
 
-    window.addEventListener('jkis-intro-complete', showPopupAfterLoader);
-
-    return () => {
-      window.removeEventListener('jkis-intro-complete', showPopupAfterLoader);
-      if (popupTimer) clearTimeout(popupTimer);
-    };
+    window.addEventListener('jkis-intro-complete', showPopup);
+    return () => window.removeEventListener('jkis-intro-complete', showPopup);
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem(admissionsConfig.popup.localStorageKey, 'true');
   };
 
   const handleRegister = () => {
-    localStorage.setItem(admissionsConfig.popup.localStorageKey, 'true');
     window.location.href = admissionsConfig.registrationUrl;
   };
 

@@ -183,9 +183,92 @@ html.intro-seen #site-intro-overlay {
   animation: intro-mark-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-#site-intro-overlay .intro-progress-track {
+#site-intro-overlay .intro-progress-row {
+  position: relative;
   margin-top: 1.75rem;
   width: min(240px, 70vw);
+}
+
+#site-intro-overlay .intro-walker {
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  width: 30px;
+  height: 38px;
+  transform: translateX(-15px);
+  transition: left 50ms linear;
+}
+
+#site-intro-overlay .intro-walker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#site-intro-overlay .walker-leg,
+#site-intro-overlay .walker-arm {
+  transform-box: fill-box;
+}
+
+#site-intro-overlay .walker-leg-left {
+  transform-origin: 50% 0%;
+  animation: walker-swing-a 0.5s ease-in-out infinite alternate;
+}
+
+#site-intro-overlay .walker-leg-right {
+  transform-origin: 50% 0%;
+  animation: walker-swing-b 0.5s ease-in-out infinite alternate;
+}
+
+#site-intro-overlay .walker-arm-left {
+  transform-origin: 50% 0%;
+  animation: walker-swing-b 0.5s ease-in-out infinite alternate;
+}
+
+#site-intro-overlay .walker-arm-right {
+  transform-origin: 50% 0%;
+  animation: walker-swing-a 0.5s ease-in-out infinite alternate;
+}
+
+#site-intro-overlay .intro-walker-body {
+  animation: walker-bob 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes walker-swing-a {
+  from {
+    transform: rotate(-22deg);
+  }
+  to {
+    transform: rotate(22deg);
+  }
+}
+
+@keyframes walker-swing-b {
+  from {
+    transform: rotate(22deg);
+  }
+  to {
+    transform: rotate(-22deg);
+  }
+}
+
+@keyframes walker-bob {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-intro-overlay .intro-walker {
+    display: none;
+  }
+}
+
+#site-intro-overlay .intro-progress-track {
+  width: 100%;
   height: 5px;
   background: color-mix(in srgb, var(--ivory-50) 20%, transparent);
   border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent);
@@ -195,9 +278,25 @@ html.intro-seen #site-intro-overlay {
 #site-intro-overlay .intro-progress-fill {
   height: 100%;
   width: 0%;
-  background: var(--gold-400);
+  background: linear-gradient(
+    90deg,
+    var(--gold-500) 0%,
+    var(--gold-300) 50%,
+    var(--gold-500) 100%
+  );
+  background-size: 200% 100%;
   box-shadow: 0 0 12px color-mix(in srgb, var(--gold-400) 70%, transparent);
   transition: width 50ms linear;
+  animation: intro-progress-shimmer 1.4s linear infinite;
+}
+
+@keyframes intro-progress-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 #site-intro-overlay .intro-progress-value {
@@ -223,6 +322,7 @@ html.intro-seen #site-intro-overlay {
 @media (prefers-reduced-motion: reduce) {
   #site-intro-overlay .intro-progress-fill {
     transition: none;
+    animation: none;
   }
 }
 .crest-divider {

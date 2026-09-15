@@ -3,9 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { schoolConfig } from '@/config/school-config';
 import { navigationConfig } from '@/config/navigation-config';
-import { admissionsConfig } from '@/config/admissions-config';
 import { MapPin, Phone } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { SocialLinks } from '@/components/layout/SocialLinks';
 

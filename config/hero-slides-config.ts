@@ -1,4 +1,3 @@
-import { schoolImages } from "./images-config";
 import { schoolConfig } from "./school-config";
 import { admissionsConfig } from "./admissions-config";
 
@@ -14,7 +13,7 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    image: "/images/hero/hero11.png",
+    image: "/images/hero/hero11.jpeg",
     alt: "Students at John Kennedy International Schools",
     eyebrow: schoolConfig.name,
     headline: schoolConfig.tagline.split(". ").map((line, i, arr) => (i < arr.length - 1 ? `${line}.` : line)),
@@ -24,7 +23,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "Explore Our School", href: "/about" },
   },
   {
-    image:"/images/hero/hro1.png" ,
+    image:"/images/hero/hro1.jpeg" ,
     alt: "Students engaged in classroom learning",
     eyebrow: "Academic Excellence",
     headline: ["A Clear Path", "From Nursery to Senior Secondary"],
@@ -34,7 +33,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "Why Choose Us", href: "/about" },
   },
   {
-    image: "/images/about/img11.png",
+    image: "/images/about/img11-schoollife.jpeg",
     alt: "Students taking part in school activities",
     eyebrow: "Beyond the Classroom",
     headline: ["A Vibrant School Life", "That Builds Character"],
@@ -44,7 +43,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "See Our Sections", href: "/about" },
   },
   {
-    image: "/images/hero/hro4.png",
+    image: "/images/hero/hro4.jpeg",
     alt: "A welcoming school environment for new families",
     eyebrow: admissionsConfig.announcement.title,
     headline: ["Give Your Child", "A Strong Foundation"],

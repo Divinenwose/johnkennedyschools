@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    // 90 is used for full-bleed hero/page-banner images (see Hero.tsx and
+    // PageHeader.tsx) since these display much larger than the default
+    // 75 comfortably supports; 75 remains the default elsewhere.
+    qualities: [75, 90],
   },
 };
 
