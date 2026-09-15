@@ -183,19 +183,25 @@ html.intro-seen #site-intro-overlay {
   animation: intro-mark-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-#site-intro-overlay .intro-progress-row {
-  position: relative;
+#site-intro-overlay .intro-progress-track {
   margin-top: 1.75rem;
   width: min(240px, 70vw);
+  height: 5px;
+  background: color-mix(in srgb, var(--ivory-50) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent);
+  overflow: hidden;
 }
 
+/* The walker traverses the full width of the screen, left to right,
+   independent of (and positioned beneath) the centered logo/progress
+   block above — not confined to the small progress-track width. */
 #site-intro-overlay .intro-walker {
   position: absolute;
-  bottom: 9px;
+  bottom: 20%;
   left: 0;
-  width: 30px;
-  height: 38px;
-  transform: translateX(-15px);
+  width: 52px;
+  height: 68px;
+  transform: translateX(-50%);
   transition: left 50ms linear;
 }
 
@@ -265,14 +271,6 @@ html.intro-seen #site-intro-overlay {
   #site-intro-overlay .intro-walker {
     display: none;
   }
-}
-
-#site-intro-overlay .intro-progress-track {
-  width: 100%;
-  height: 5px;
-  background: color-mix(in srgb, var(--ivory-50) 20%, transparent);
-  border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent);
-  overflow: hidden;
 }
 
 #site-intro-overlay .intro-progress-fill {
