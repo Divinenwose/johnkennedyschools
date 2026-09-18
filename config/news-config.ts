@@ -1,47 +1,40 @@
 import { schoolImages } from "./images-config";
 
-// Note: article images below reuse the site's existing curated Unsplash
-// set (rather than /images/news/*.jpg, which doesn't exist on disk) so
-// the photographic direction stays consistent. Swap for real JKIS event
-// photography when available.
+// Real news items. Dates below are placeholders (not confirmed) — update
+// them to the actual dates once known. Images reuse the site's existing
+// real photography where a good thematic match exists.
 export const newsConfig = {
   featured: {
     id: 1,
-    category: "School News",
-    date: "2024-01-15",
-    title: "Excellence in Education: Our Commitment to Student Success",
-    description: "Discover how John Kennedy International Schools continues to provide exceptional education that prepares students for a bright future.",
-    image: schoolImages.about,
-    slug: "excellence-in-education",
+    category: "Events",
+    date: "2026-08-01",
+    title: "Summer School Programme Now Open",
+    description:
+      "John Kennedy International Schools is delighted to announce its Summer School programme, offering pupils a stimulating blend of academic reinforcement, creative activities and holiday fun. Places are available across all levels, from Nursery through Senior Secondary.",
+    image: schoolImages.activities,
+    slug: "summer-school-programme",
   },
-  
+
   articles: [
     {
       id: 2,
-      category: "Events",
-      date: "2024-01-10",
-      title: "Annual Sports Day Celebration",
-      description: "Students showcase their athletic abilities and sportsmanship in our exciting annual sports competition.",
-      image: schoolImages.sports,
-      slug: "annual-sports-day",
+      category: "School News",
+      date: "2026-07-20",
+      title: "Graduating Class Celebrated at Annual Graduation Ceremony",
+      description:
+        "Our graduating students were celebrated in style at this year's graduation ceremony, marking a proud milestone as they move on to the next stage of their academic journey. Parents, teachers and school leadership gathered to honour their achievements in academics, character and leadership throughout their time at John Kennedy International Schools.",
+      image: schoolImages.gallery.events,
+      slug: "graduation-ceremony",
     },
     {
       id: 3,
       category: "Academics",
-      date: "2024-01-05",
-      title: "Science Fair Innovation Showcase",
-      description: "Our students present innovative projects demonstrating creativity and scientific thinking.",
-      image: schoolImages.classroom,
-      slug: "science-fair",
-    },
-    {
-      id: 4,
-      category: "Community",
-      date: "2024-01-02",
-      title: "Community Service Initiative",
-      description: "Students engage in meaningful community service projects, learning the value of giving back.",
-      image: schoolImages.events,
-      slug: "community-service",
+      date: "2026-07-10",
+      title: "Pupils Explore Aviation and Science on Academic Excursion",
+      description:
+        "As part of this term's experiential learning programme, our Nursery, Primary and Junior Secondary pupils enjoyed an educational excursion to Murtala Muhammed International Airport, gaining first-hand insight into aviation and air travel. Meanwhile, our Senior Secondary students visited Deo Science Discovery World for a hands-on exploration of science and technology.",
+      image: schoolImages.gallery.learning,
+      slug: "airport-and-science-excursion",
     },
   ],
 };

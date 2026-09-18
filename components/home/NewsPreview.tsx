@@ -21,7 +21,7 @@ export const NewsPreview: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-10">
-          {newsConfig.articles.map((article) => (
+          {[newsConfig.featured, ...newsConfig.articles].map((article) => (
             <article key={article.id} className="group">
               <div className="relative aspect-[4/3] mb-5 overflow-hidden">
                 <Image

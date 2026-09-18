@@ -108,22 +108,6 @@ export default function NewsPage() {
         </Container>
       </section>
       </Reveal>
-
-      {/* Note */}
-      <Reveal>
-      <section className="pb-20 md:pb-28 bg-ivory-100">
-        <Container size="md">
-          <div className="border-l-2 border-gold-500 pl-6 py-1">
-            <h3 className="font-display text-lg text-navy-950 mb-2">About This Section</h3>
-            <p className="text-charcoal-600 text-sm leading-relaxed">
-              The articles above are placeholder content demonstrating the page structure. Real
-              news and events from John Kennedy International Schools will be added by the school
-              administration, and this section is built to connect easily to a CMS or API later.
-            </p>
-          </div>
-        </Container>
-      </section>
-      </Reveal>
     </main>
   );
 }
