@@ -195,33 +195,13 @@ html.intro-seen #site-intro-overlay {
 #site-intro-overlay .intro-progress-fill {
   height: 100%;
   width: 0%;
-  /* Two layers: a directional "progression" gradient that stays fixed
-     (richer/brighter toward the leading edge, so the color itself shows
-     how far along the bar is) plus a subtle highlight streak that sweeps
-     across on top for a bit of shine. */
-  background-image:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--ivory-50) 55%, transparent) 50%,
-      transparent 100%
-    ),
-    linear-gradient(90deg, var(--gold-600) 0%, var(--gold-400) 55%, var(--gold-300) 100%);
-  background-size: 60% 100%, 100% 100%;
-  background-repeat: no-repeat, no-repeat;
-  background-position: -60% 0, 0 0;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--gold-400) 70%, transparent);
-  transition: width 50ms linear;
-  animation: intro-progress-shimmer 1.6s ease-in-out infinite;
-}
-
-@keyframes intro-progress-shimmer {
-  from {
-    background-position: -60% 0, 0 0;
-  }
-  to {
-    background-position: 160% 0, 0 0;
-  }
+  /* Color itself shifts as loading progresses — set via JS each tick
+     (see IntroLoader.tsx) from a muted gold at the start to a bright,
+     warm gold near completion, so progress is visible in the color, not
+     just the width. Falls back to a plain gold if JS hasn't run yet. */
+  background-color: var(--intro-fill-color, var(--gold-500));
+  box-shadow: 0 0 10px var(--intro-fill-glow, color-mix(in srgb, var(--gold-400) 50%, transparent));
+  transition: width 50ms linear, background-color 50ms linear, box-shadow 50ms linear;
 }
 
 #site-intro-overlay .intro-progress-value {
