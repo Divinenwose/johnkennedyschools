@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { Button } from '@/components/ui/Button';
+import { Card, CardContent } from '@/components/ui/Card';
 import { schoolImages } from '@/config/images-config';
 import { Target, Heart, Shield, Users, Lightbulb, Award } from 'lucide-react';
 import Image from 'next/image';
@@ -36,7 +37,7 @@ function getInitials(name: string) {
 
 function BoardMemberCard({ name, title, image }: BoardMember) {
   return (
-    <div className="group">
+    <Card hover className="group">
       <div className="relative aspect-[4/5] overflow-hidden bg-navy-950">
         {image ? (
           <Image
@@ -58,11 +59,11 @@ function BoardMemberCard({ name, title, image }: BoardMember) {
           </div>
         )}
       </div>
-      <div className="mt-4">
+      <CardContent className="text-center">
         <h3 className="font-display text-lg text-navy-950">{name}</h3>
         <p className="text-charcoal-600 text-sm mt-0.5">{title}</p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -251,7 +252,7 @@ export default function AboutPage() {
             </SectionHeading>
 
             <div className="max-w-3xl mx-auto mb-12">
-              <p className="text-center text-gray-600 leading-relaxed text-base md:text-lg">
+              <p className="text-center text-charcoal-600 leading-relaxed text-base md:text-lg">
                 Behind every great school is a vision that reaches beyond the classroom.
                 Our Board of Directors provides the leadership, wisdom, and direction that
                 continue to shape our school into a place where young minds are nurtured,
