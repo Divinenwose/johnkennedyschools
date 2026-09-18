@@ -16,7 +16,7 @@ export const AdmissionsCTA: React.FC = () => {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-top opacity-[0.16]"
+          className="object-cover object-center opacity-[0.16]"
           aria-hidden="true"
         />
       </div>
