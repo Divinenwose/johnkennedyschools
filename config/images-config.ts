@@ -2,7 +2,7 @@ export const schoolImages = {
   // Using Unsplash source URLs for real temporary photographs
   // These can be easily replaced with actual school photographs later
   hero: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80",
-  students: "/images/gallery/stud.jpeg",
+  students: "/images/gallery/studd.jpeg",
   classroom: "/images/gallery/junior.jpeg",
   nursery:  "/images/admissions/nursery.jpeg",
   college: "/images/gallery/events.jpeg",
@@ -12,7 +12,7 @@ export const schoolImages = {
   teachers: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
   events: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80",
   about: "/images/about/img11.jpeg",
-  admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
+  admissions: "/images/admissions/admin.jpeg",
   results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
 
   // Higher-resolution variants of the same photographs, sized for
@@ -21,8 +21,8 @@ export const schoolImages = {
     about: "/images/about/ab1.jpeg",
     academics: "/images/academics/acad.jpeg",
     admissions: "/images/about/enrol.jpeg",
-    schoolLife:"/images/life.jpeg",
-    news: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1920&q=80",
+    schoolLife:"/images/lif.jpeg",
+    news: "/images/news/stu.jpeg",
     contact: "/images/contact.jpeg",
   },
   
@@ -40,7 +40,7 @@ export const schoolImages = {
     learning: "/images/hero/hro1.jpeg",
     students: "/images/gallery/studs.jpeg",
     classroom: "/images/gallery/comm.jpeg",
-    sports: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80",
+    sports: "/images/events/sports.jpeg",
     activities: "/images/gallery/activity.jpeg",
     events: "/images/gallery/events.jpeg",
   },

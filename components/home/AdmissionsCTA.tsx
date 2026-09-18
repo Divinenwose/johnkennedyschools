@@ -9,14 +9,14 @@ export const AdmissionsCTA: React.FC = () => {
   if (!admissionsConfig.isOpen) return null;
 
   return (
-    <section className="relative py-24 md:py-32 bg-navy-950 overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-navy-800 overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src={schoolImages.students}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-[0.16]"
+          className="object-cover object-center opacity-[0.16]"
           aria-hidden="true"
         />
       </div>

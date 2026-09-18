@@ -52,7 +52,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             priority
             sizes="100vw"
             quality={90}
-            className="object-cover"
+            className="object-cover object-center"
             aria-hidden="true"
           />
           <div className={`absolute inset-0 ${overlayStyles[overlay][0]}`} />
