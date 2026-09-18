@@ -4,7 +4,7 @@ export const schoolConfig = {
   
   campuses: {
     nursery: {
-      name: "John Kennedy International School (Nursery & Primary)",
+      name: "John Kennedy International School (Creche, Nursery & Primary)",
       address: "4A, Shaki Crescent, Off Cassette Bus Stop, Aguda, Surulere, Lagos",
     },
     college: {
