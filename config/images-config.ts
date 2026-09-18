@@ -12,8 +12,8 @@ export const schoolImages = {
   teachers: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
   events: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80",
   about: "/images/about/img11.jpeg",
-  admissions: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
-  results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+  admissions: "/images/admissions/admin.jpeg",
+  results: "/images/school-life/kids.jpeg",
 
   // Higher-resolution variants of the same photographs, sized for
   // full-bleed page header banners rather than small content slots.

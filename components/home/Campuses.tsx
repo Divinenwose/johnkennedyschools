@@ -25,7 +25,7 @@ export const Campuses: React.FC = () => {
       label: 'College',
       name: schoolConfig.campuses.college.name,
       address: schoolConfig.campuses.college.address,
-      image: '/images/hero/hero11.png',
+      image: '/images/hero/hero11.jpeg',
       description:
         'Comprehensive secondary education with strong academic foundation, character development, and preparation for higher education.',
       location:
