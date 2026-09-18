@@ -22,8 +22,6 @@ export function IntroLoader() {
     document.documentElement.style.overflow = 'hidden';
 
     const fill = overlay.querySelector<HTMLElement>('.intro-progress-fill');
-    const walker = document.getElementById('intro-walker');
-    const track = overlay.querySelector<HTMLElement>('.intro-progress-track');
     const value = document.getElementById('intro-progress-value');
     const startedAt = Date.now();
     const progressTimer = window.setInterval(() => {
@@ -32,11 +30,6 @@ export function IntroLoader() {
 
       if (fill) fill.style.width = `${percent}%`;
       if (value) value.textContent = `Loading ${percent}%`;
-      // Walks along the loading line itself, left edge to right edge, in
-      // step with the same percentage as the fill.
-      if (walker && track) {
-        walker.style.left = `${progress * track.clientWidth}px`;
-      }
 
       if (progress >= 1) window.clearInterval(progressTimer);
     }, 50);

@@ -183,100 +183,13 @@ html.intro-seen #site-intro-overlay {
   animation: intro-mark-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Wraps the walker + the progress line together so the character can be
-   positioned relative to the line itself and walk along it. */
-#site-intro-overlay .intro-progress-row {
-  position: relative;
+#site-intro-overlay .intro-progress-track {
   margin-top: 1.75rem;
   width: min(240px, 70vw);
-}
-
-#site-intro-overlay .intro-progress-track {
-  width: 100%;
   height: 5px;
   background: color-mix(in srgb, var(--ivory-50) 20%, transparent);
   border: 1px solid color-mix(in srgb, var(--gold-300) 35%, transparent);
   overflow: hidden;
-}
-
-/* Stands on the line, starting at its left edge, and walks along it to
-   the right in step with the loading percentage. */
-#site-intro-overlay .intro-walker {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 30px;
-  height: 35px;
-  transform: translateX(-16px);
-  transition: left 50ms linear;
-}
-
-#site-intro-overlay .intro-walker svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-#site-intro-overlay .walker-leg,
-#site-intro-overlay .walker-arm {
-  transform-box: fill-box;
-}
-
-#site-intro-overlay .walker-leg-left {
-  transform-origin: 50% 0%;
-  animation: walker-swing-a 0.5s ease-in-out infinite alternate;
-}
-
-#site-intro-overlay .walker-leg-right {
-  transform-origin: 50% 0%;
-  animation: walker-swing-b 0.5s ease-in-out infinite alternate;
-}
-
-#site-intro-overlay .walker-arm-left {
-  transform-origin: 50% 0%;
-  animation: walker-swing-b 0.5s ease-in-out infinite alternate;
-}
-
-#site-intro-overlay .walker-arm-right {
-  transform-origin: 50% 0%;
-  animation: walker-swing-a 0.5s ease-in-out infinite alternate;
-}
-
-#site-intro-overlay .intro-walker-body {
-  animation: walker-bob 0.5s ease-in-out infinite alternate;
-}
-
-@keyframes walker-swing-a {
-  from {
-    transform: rotate(-22deg);
-  }
-  to {
-    transform: rotate(22deg);
-  }
-}
-
-@keyframes walker-swing-b {
-  from {
-    transform: rotate(22deg);
-  }
-  to {
-    transform: rotate(-22deg);
-  }
-}
-
-@keyframes walker-bob {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-2px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #site-intro-overlay .intro-walker {
-    display: none;
-  }
 }
 
 #site-intro-overlay .intro-progress-fill {
