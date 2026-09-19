@@ -17,6 +17,16 @@ export const newsConfig = {
 
   articles: [
     {
+      id: 4,
+      category: "Events",
+      date: "2026-08-10",
+      title: "John Kennedy International Schools to Celebrate 20th Anniversary",
+      description:
+        "John Kennedy International Schools is preparing to mark a major milestone — its 20th Anniversary. Celebrations are being planned across both campuses to honour two decades of academic excellence, character development and community impact, with more details to be announced soon.",
+      image: schoolImages.pageHeroes.news,
+      slug: "20th-anniversary-celebration",
+    },
+    {
       id: 2,
       category: "School News",
       date: "2026-07-20",
