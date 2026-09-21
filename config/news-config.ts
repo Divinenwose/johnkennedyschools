@@ -7,7 +7,7 @@ export const newsConfig = {
   featured: {
     id: 1,
     category: "Events",
-    date: "2026-08-01",
+    date: "3rd August, 2026",
     title: "Summer School Programme Now Open",
     description:
       "John Kennedy International Schools is delighted to announce its Summer School programme, offering pupils a stimulating blend of academic reinforcement, creative activities and holiday fun. Places are available across all levels, from Nursery through Senior Secondary.",
