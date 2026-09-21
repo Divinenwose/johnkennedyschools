@@ -17,7 +17,7 @@ export const metadata = {
 const boardOfDirectors = [
   { name: 'Mrs Patricia Nnaemeka', title: 'Proprietress', image: '/images/board/pat.jpeg' },
   { name: 'Mr. Obiajulu Nnaemeka', title: 'Executive Director', image: '/images/board/obi.jpeg' },
-  { name: 'Mrs. Mercy Katchy', title: 'Executive Director', image: '/images/board/mercy.jpeg' },
+  { name: 'Mrs. Nneka Katchy', title: 'Executive Director', image: '/images/board/nneka.jpeg' },
   { name: 'Mr. Chukwuka Nnaemeka', title: 'Executive Director', image: '/images/board/chu.jpeg' },
   { name: 'Mr Chibuike Nnaemeka', title: 'Executive Director', image: '/images/board/chubby.jpeg' },
   { name: 'Mr. Olu Olagbuji', title: 'Coordinator', image: '/images/board/olu.jpeg' },

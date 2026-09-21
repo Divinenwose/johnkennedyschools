@@ -13,6 +13,7 @@ export const schoolImages = {
   events: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80",
   about: "/images/about/img11.jpeg",
   admissions: "/images/admissions/admin.jpeg",
+  summer: "/images/news/summer.jpeg",
   results: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
 
   // Higher-resolution variants of the same photographs, sized for
@@ -24,6 +25,8 @@ export const schoolImages = {
     schoolLife:"/images/lif.jpeg",
     news: "/images/news/stu.jpeg",
     contact: "/images/contact.jpeg",
+    excursion: "/images/news/excursion.jpeg",
+    anniversary: "/images/events/anny.png",
   },
   
   // Portrait placeholders for testimonials — replace with real parent
@@ -43,5 +46,6 @@ export const schoolImages = {
     sports: "/images/events/sports.jpeg",
     activities: "/images/gallery/activity.jpeg",
     events: "/images/gallery/events.jpeg",
+    graduation: "/images/events/grad.jpeg",
   },
 };
