@@ -7,6 +7,7 @@ import { schoolConfig } from '@/config/school-config';
 import { admissionsConfig } from '@/config/admissions-config';
 import { schoolImages } from '@/config/images-config';
 import { FileText, CheckCircle, Calendar, MapPin, Phone } from 'lucide-react';
+import { FaqAccordion } from '@/components/admissions/FaqAccordion';
 import Image from 'next/image';
 
 export const metadata = {
@@ -235,14 +236,7 @@ export default function AdmissionsPage() {
             Frequently Asked Questions
           </SectionHeading>
 
-          <div className="divide-y divide-stone-300 mt-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="py-6">
-                <h3 className="font-display text-lg text-navy-950 mb-2">{faq.question}</h3>
-                <p className="text-charcoal-700 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <FaqAccordion faqs={faqs} />
         </Container>
       </section>
       </Reveal>
